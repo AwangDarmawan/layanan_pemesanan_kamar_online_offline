@@ -14,13 +14,13 @@ class CreateTamusTable extends Migration
     public function up()
     {
         Schema::create('tamus', function (Blueprint $table) {
-            $table->bigIncrements('id_tamu');
-            $table->string('name');
-            $table->string('alamat');
-            $table->enum('jenis_kelamin', ['pria', 'wanita']);
-            $table->string('no_hp');
-           
+            $table->id();
+            $table->string('name',50);
+            $table->text('alamat');
+            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
+            $table->string('no_hp', 15);
             $table->timestamps();
+
         });
     }
 

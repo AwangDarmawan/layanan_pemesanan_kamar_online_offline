@@ -14,10 +14,10 @@ class CreateKaryawansTable extends Migration
     public function up()
     {
         Schema::create('karyawans', function (Blueprint $table) {
-            $table->bigIncrements('id_karyawan');
+            $table->id();
             $table->string('name');
-            $table->string('npm')->unique();
-            $table->enum('jenis_kelamin', ['pria', 'wanita']);
+            $table->string('npm', 25);
+            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
             $table->timestamps();
             
         });

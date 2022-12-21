@@ -14,14 +14,20 @@ class CreateReservasisTable extends Migration
     public function up()
     {
         Schema::create('reservasis', function (Blueprint $table) {
-            $table->bigIncrements('no_reservasi');
-            $table->foreignId('id_tamu')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('id_karyawan')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->char('no_reservasi', 10);
+            $table->bigInteger('tamus_id')->unsigned();
+            $table->bigInteger('karyawans_id')->unsigned();
             $table->integer('jumlah_kamar');
-            $table->date('tanggal_masuk');
-            $table->date('tanggal_keluar');
-            $table->int('waktu_lama');
+            $table->date('tgl_masuk');
+            $table->date('tgl_keluar');
+            $table->integer('lama');
             $table->timestamps();
+
+            $table->foreign('tamus_id')->references('id')->on('tamus')
+            ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('karyawans_id')->references('id')->on('karyawans')
+            ->onDelete('cascade')->onUpdate('cascade');
+            $table->primary('no_reservasi');
         });
     }
 

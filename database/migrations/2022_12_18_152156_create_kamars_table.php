@@ -14,10 +14,12 @@ class CreateKamarsTable extends Migration
     public function up()
     {
         Schema::create('kamars', function (Blueprint $table) {
-            $table->bigIncrements('id_kamar');
-            $table->string('jenis_kamar');
-            $table->biginteger('harga')->unsigned();
+            $table->id();
+            $table->char('jenis', 15);
+            $table->integer('harga');
             $table->timestamps();
+
+            
         });
     }
 
