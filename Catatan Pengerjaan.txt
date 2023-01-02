@@ -1,0 +1,7 @@
+buat autentication
+-intall composer require laravel/ui
+-php artisan ui boostrap --auth 
+-npm install 
+-npm run dev
+
+cara buat migration file lewat terminal : php artisan make:migration add_column_username_users_table --table=users
