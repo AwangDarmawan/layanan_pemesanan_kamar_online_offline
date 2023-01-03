@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -41,5 +44,20 @@ class LoginController extends Controller
     public function username()
     {
         return 'username';
+    }
+
+    //mengovereading fungsi login
+    public function login(Request $request)
+    {
+ 
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'status' => 1])) {
+            $request->session()->regenerate();
+ 
+            return redirect()->intended('home');
+        }
+ 
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 }

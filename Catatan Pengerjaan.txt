@@ -5,3 +5,7 @@ buat autentication
 -npm run dev
 
 cara buat migration file lewat terminal : php artisan make:migration add_column_username_users_table --table=users
+
+
+permasalhan yang umum terjadi :
+salah sintak, lupa melakukan pemanggilan library atau kelas(import) 
