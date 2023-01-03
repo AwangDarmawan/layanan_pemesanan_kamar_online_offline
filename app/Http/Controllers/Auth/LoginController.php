@@ -49,11 +49,19 @@ class LoginController extends Controller
     //mengovereading fungsi login
     public function login(Request $request)
     {
+        $input = $request->all();
  
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'status' => 1])) {
+        if(auth()->attempt(array('username'=>$input['username'], 'password'=> $input['password'], 'status' => 1)))
+        {
             $request->session()->regenerate();
  
-            return redirect()->intended('home');
+            if (auth()->user()->role_id == 1){
+                return redirect()->route('karyawan.home');
+            }else{
+                return redirect()->route('home');
+            }
+        }else{
+            return redirect()->route('login')->with('email','Email-Address And Password are Wrong.');
         }
  
         return back()->withErrors([

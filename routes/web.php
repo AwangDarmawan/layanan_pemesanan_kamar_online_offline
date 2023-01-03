@@ -19,9 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home',[App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 //akses admin home
-Route::get('admin/home', [App\Http\Controllers\AdminController::class, 'index'])
-->name('admin.home')
-->middleware('Karyawan');
+Route::get('karyawan/home', [App\Http\Controllers\KaryawanController::class, 'index'])
+->name('karyawan.home')
+->middleware('karyawan');
