@@ -15,11 +15,7 @@
 -->
 <!DOCTYPE html>
 
-@if (\Request::is('rtl'))
-  <html dir="rtl" lang="ar">
-@else
-  <html lang="en" >
-@endif
+
 
 <head>
   <meta charset="utf-8" />
