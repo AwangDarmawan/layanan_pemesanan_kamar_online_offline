@@ -26,3 +26,35 @@ Route::get('/home',[App\Http\Controllers\HomeController::class, 'index'])->name(
 Route::get('karyawan/home', [App\Http\Controllers\KaryawanController::class, 'index'])
 ->name('karyawan.home')
 ->middleware('karyawan');
+
+// Route::get('dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+
+Route::get('karyawan/dashboard', [App\Http\Controllers\KaryawanController::class, 'index'])
+->name('karyawan.dashboard')
+->middleware('karyawan');
+
+Route::get('karyawan/pengguna', [App\Http\Controllers\KaryawanController::class, 'pengguna'])
+->name('karyawan.pengguna')
+->middleware('karyawan');
+
+Route::get('karyawan/kamar', [App\Http\Controllers\KaryawanController::class, 'kamar'])
+->name('karyawan.kamar')
+->middleware('karyawan');
+
+Route::get('karyawan/tertunda', [App\Http\Controllers\KaryawanController::class, 'tertunda'])
+->name('karyawan.tertunda')
+->middleware('karyawan');
+
+Route::get('karyawan/konfirmasi', [App\Http\Controllers\KaryawanController::class, 'konfirmasi'])
+->name('karyawan.konfirmasi')
+->middleware('karyawan');
+
+Route::get('karyawan/laporan', [App\Http\Controllers\KaryawanController::class, 'laporan'])
+->name('karyawan.laporan')
+->middleware('karyawan');
+
+Route::get('karyawan/profile', [App\Http\Controllers\KaryawanController::class, 'profile'])
+->name('karyawan.profile')
+->middleware('karyawan');
