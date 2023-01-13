@@ -56,7 +56,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
  
             if (auth()->user()->role_id == 1){
-                return redirect()->route('karyawan.home');
+                return redirect()->route('karyawan.dashboard');
             }else{
                 return redirect()->route('home');
             }
