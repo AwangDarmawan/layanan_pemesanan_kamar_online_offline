@@ -58,3 +58,6 @@ Route::get('karyawan/laporan', [App\Http\Controllers\KaryawanController::class, 
 Route::get('karyawan/profile', [App\Http\Controllers\KaryawanController::class, 'profile'])
 ->name('karyawan.profile')
 ->middleware('karyawan');
+
+//logout
+// Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'destroy'])->name('logout')->middleware('auth');
