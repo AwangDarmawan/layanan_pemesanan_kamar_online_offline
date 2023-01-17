@@ -20,7 +20,7 @@
                     @csrf
                     <label>{{ __('Username') }}</label>
                     <div class="mb-3">
-                      <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="username" placeholder="Username" aria-label="Username" aria-describedby="username-addon"  name="username" value="{{ old('username') }}" required autocomplete="username">
+                      <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" id="username" placeholder="masukan Username" aria-label="Username" aria-describedby="username-addon"  name="username" value="{{ old('username') }}" required autocomplete="username">
                       @error('username')
                         <span class="text-danger text-xs mt-2" role="alert">
                             <strong>{{ $message }}</strong>
@@ -29,7 +29,7 @@
                     </div>
                     <label>{{ __('Password') }}</label>
                     <div class="mb-3">
-                      <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password" value="secret" aria-label="Password" aria-describedby="password-addon" required autocomplete="current-password">
+                      <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="masukan Password" aria-label="Password" aria-describedby="password-addon" required autocomplete="current-password">
                       @error('password')
                           <span class="text-danger text-xs mt-2" role="alert">
                               <strong>{{ $message }}</strong>
