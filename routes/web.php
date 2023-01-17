@@ -55,6 +55,10 @@ Route::get('karyawan/laporan', [App\Http\Controllers\KaryawanController::class, 
 ->name('karyawan.laporan')
 ->middleware('karyawan');
 
+Route::get('karyawan/reservasi', function () {
+    return view('karyawan/reservasi');
+})->name('karyawan.reservasi');
+
 Route::get('karyawan/profile', [App\Http\Controllers\KaryawanController::class, 'profile'])
 ->name('karyawan.profile')
 ->middleware('karyawan');

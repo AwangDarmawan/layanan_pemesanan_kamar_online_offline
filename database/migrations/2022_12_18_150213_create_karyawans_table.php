@@ -15,9 +15,19 @@ class CreateKaryawansTable extends Migration
     {
         Schema::create('karyawans', function (Blueprint $table) {
             $table->id();
+            $table->integer('nip')->length(12)->unique();
             $table->string('name');
-            $table->string('npm', 25);
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
+            $table->string('alamat')->length(30);
+            $table->integer('no_hp')->length(14)->unique();
+            $table->string('foto')->nullable();
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            
             $table->timestamps();
             
         });

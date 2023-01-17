@@ -15,12 +15,21 @@ class CreateTamusTable extends Migration
     {
         Schema::create('tamus', function (Blueprint $table) {
             $table->id();
-            $table->string('name',50);
-            $table->text('alamat');
+            $table->string('name')->length(20);
+            $table->text('alamat')->length(30);
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
-            $table->string('no_hp', 15);
+            $table->integer('no_hp')->length(15);
+            $table->string('foto')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+
             $table->timestamps();
 
+            
         });
     }
 
