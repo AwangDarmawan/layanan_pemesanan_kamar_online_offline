@@ -18,7 +18,7 @@
             <div class="card card-header pb-2 pt-3 mb-2 ms-4">
                 <div class="d-flex flex-row justify-content-between">
                     <div class="" style="padding-left:20px;">
-                        <h5>TAMBAH RESERVASI</h5>
+                        <h5>RESERVASI BARU</h5>
                     </div>
                 </div>
             </div>
@@ -67,10 +67,14 @@
                             <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="masukan tanggal keluar kamar">
                         </div>
                     </div>
-                  </form>
+                    <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2" >Batal</button>
+                    <span>
+                    <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2 ms-1" >Reservasi</button>
+                    </span>
+                </form>
                   
             </div>
-            <button type="submit" class="btn bg-gradient-primary mx-4 mb-4">Reservasi</button>
+            
           </div>
     </div>
 </div>

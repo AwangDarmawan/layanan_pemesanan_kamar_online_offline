@@ -146,7 +146,7 @@
                                 </td>
                                 <td class="text-center">
                                     <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="edit user">
-                                        <i class="fas fa-user-edit text-secondary"></i>
+                                        <i class="fas fa-user-edit text-secondary" type="button" data-bs-toggle="modal" data-bs-target="#editTamuModal"></i>
                                     </a>
                                     <span>
                                         <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="hapus user">
@@ -212,15 +212,74 @@
                     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0895XXXXXXXX">
                   </div>
                 </div>
+                <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2" >Batal</button>
+                <span>
+                <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2 ms-1" >Simpan</button>
+                </span>
               </form>
         </div>
-        
-        
-        <button type="submit" class="btn bg-gradient-primary m-4">Simpan</button>
         
       </div>
     </div>
   </div>
  
+  <!-- Modal edit tamu-->
+<div class="modal fade" id="editTamuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            
+            <h4 class="modal-title text-center mt-4" id="exampleModalLabel">Edit Data Tamu</h4>
+            
+            <div class="modal-body mx-2">
+                <form>
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Alamat</label>
+                            <textarea class="form-control" id="exampleFormControlInput1" rows="3"></textarea>
+                        
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6 pe-0">
+                                <label for="exampleFormControlInput1">Jenis Kelamin</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>Laki-laki</option>
+                                    <option>perempuan</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group col-md-6">
+                                <label for="exampleFormControlInput1">NO. Hp</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" id="image-area"></div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Foto</label>
+                            <input type="file" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2" >Batal</button>
+                <span>
+                <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2 ms-1" >Simpan</button>
+                </span>
+                </form>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+</div>
+
 @endsection
 

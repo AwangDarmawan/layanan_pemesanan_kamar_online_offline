@@ -77,7 +77,7 @@
                                     </td>
                                     <td class="text-center">
                                         <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="edit data kamar">
-                                            <i class="fas fa-user-edit text-secondary"></i>
+                                            <i class="fas fa-user-edit text-secondary" type="button" data-bs-toggle="modal" data-bs-target="#editKamarModal"></i>
                                         </a>
                                         <span>
                                             <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="hapus kamar">
@@ -99,55 +99,121 @@
 <!-- Modal tambah tamu-->
 <div class="modal fade" id="tamabahKamarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        
-            <h4 class="modal-title text-center mt-4" id="exampleModalLabel">Masukan Data Kamar</h4>
-          
-        <div class="modal-body">
-            <form>
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">No Kamar</label>
-                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="A1">
+        <div class="modal-content">
+            
+                <h4 class="modal-title text-center mt-4" id="exampleModalLabel">Masukan Data Kamar</h4>
+            
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                    <label for="exampleFormControlInput1">No Kamar</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="A1">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">harga</label>
+                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="masukan dalam rupiah">
+                    </div>
+                    <div class="form-group col-md-6 pe-0">
+                        <label for="exampleFormControlInput1">Jenis Kamar</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>A</option>
+                            <option>B</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="form-group col-md-4 pe-0">
+                            <label for="exampleFormControlInput1">Foto kamar</label>
+                            <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="uplode foto">
+                        </div>
+                        <div class="form-group col-md-4 pe-0">
+                            <label for="exampleFormControlInput1">Foto Wc</label>
+                            <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="uplode foto">
+                        </div>
+                        <div class="form-group col-md-4 pe-0">
+                            <label for="exampleFormControlInput1">Foto Ruangan Lain</label>
+                            <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="uplode foto">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Deskripsi</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2" >Batal</button>
+                    <span>
+                    <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2 ms-1" >Simpan</button>
+                    </span>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+  <!-- Modal edit kamar-->
+<div class="modal fade" id="editKamarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            
+            <h4 class="modal-title text-center mt-4" id="exampleModalLabel">Edit Data Kamar</h4>
+            
+            <div class="modal-body mx-2">
+                <form>
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">No</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Harga</label>
+                            <input type="number" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                        <div class="form-group col-md-6 pe-0">
+                            <label for="exampleFormControlInput1">Jenis Kamar</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>A</option>
+                                <option>B</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Deskripsi</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" id="image-area"></div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Foto Kamar</label>
+                            <input type="file" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                        <div class="form-group" id="image-area"></div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Foto Wc</label>
+                            <input type="file" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                        <div class="form-group" id="image-area"></div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Foto Ruangan Lain</label>
+                            <input type="file" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">harga</label>
-                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="masukan dalam rupiah">
-                </div>
-                <div class="form-group col-md-6 pe-0">
-                    <label for="exampleFormControlInput1">Jenis Kamar</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>A</option>
-                        <option>B</option>
-                    </select>
-                </div>
-                <div class="row">
-                    
-                    <div class="form-group col-md-4 pe-0">
-                        <label for="exampleFormControlInput1">Foto kamar</label>
-                        <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="uplode foto">
-                    </div>
-                    <div class="form-group col-md-4 pe-0">
-                        <label for="exampleFormControlInput1">Foto Wc</label>
-                        <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="uplode foto">
-                    </div>
-                    <div class="form-group col-md-4 pe-0">
-                        <label for="exampleFormControlInput1">Foto Ruangan Lain</label>
-                        <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="uplode foto">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Deskripsi</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                  </div>
-              </form>
+                <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2" >Batal</button>
+                <span>
+                <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2 ms-1" >Simpan</button>
+                </span>
+                </form>
+            </div>
+            
+            
+            
+            
         </div>
-        
-        
-        <button type="submit" class="btn bg-gradient-primary m-4">Simpan</button>
-        
-      </div>
     </div>
-  </div>
+</div>
 
 @endsection
