@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <div class="container-fluid py-4">
+
     
     <div class="row">
       <div class="col-12">
@@ -220,8 +220,8 @@
         </div>
         
       </div>
-    </div>
   </div>
+</main>
  
   <!-- Modal edit tamu-->
 <div class="modal fade" id="editTamuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

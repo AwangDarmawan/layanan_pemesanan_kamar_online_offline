@@ -36,14 +36,6 @@
                       </span>
                   @enderror
                 </div>
-                {{-- <div class="mb-3">
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Name" name="name" id="name" aria-label="Name" aria-describedby="name" value="{{ old('name') }}" required autocomplete="name">
-                  @error('name')
-                      <span class="text-danger text-xs mt-2" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
-                </div> --}}
                 <div class="mb-3">
                   <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" id="email" aria-label="Email" aria-describedby="email-addon" value="{{ old('email') }}" required autocomplete="email">
                   @error('email')

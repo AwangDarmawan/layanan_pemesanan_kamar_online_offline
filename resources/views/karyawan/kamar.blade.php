@@ -2,6 +2,8 @@
 
 @section('content')
 
+
+   
 <div>
     {{-- <div class="alert alert-secondary mx-4" role="alert">
         <span class="text-white">
@@ -94,7 +96,7 @@
             </div>
         </div>
     </div>
-</div>
+
  
 <!-- Modal tambah tamu-->
 <div class="modal fade" id="tamabahKamarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

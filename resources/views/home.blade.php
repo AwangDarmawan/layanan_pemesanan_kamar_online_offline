@@ -8,11 +8,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    @if ($user->role_id == 1)
-                        Anda login sebagai Karyawan ok
-                    @else
-                        Anda Login Sebagai Tamu
-                    @endif
+                    Anda login sebagai tamu
                 </div>
             </div>
         </div>
