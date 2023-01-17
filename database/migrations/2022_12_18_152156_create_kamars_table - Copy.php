@@ -16,8 +16,16 @@ class CreateKamarsTable extends Migration
         Schema::create('kamars', function (Blueprint $table) {
             $table->id();
             $table->char('jenis', 15);
-            $table->integer('harga');
+            $table->biginteger('harga');
+            $table->string('foto_kamar')->notnull();
+            $table->string('foto_wc')->notnull();
+            $table->bigInteger('status_id')->unsigned();
+            $table->string('foto_ruangan')->nullable();
+
             $table->timestamps();
+
+            $table->foreign('status_id')->references('id')->on('status')
+            ->onDelete('cascade')->onUpdate('cascade');
 
             
         });
