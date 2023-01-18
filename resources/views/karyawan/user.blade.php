@@ -2,10 +2,11 @@
 
 @section('content')
 
+<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
   <div class="container-fluid py-4">
     
     <div class="row">
-      <div class="col-12">
+        <div class="col-12">
             <div class="card mb-4 mx-4">
                 <div class="card-header pb-0">
                     <div class="d-flex flex-row justify-content-between">
@@ -20,6 +21,9 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                      No
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                         NIP
                                     </th>
                                     <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
@@ -32,6 +36,9 @@
                                         Email
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                        Jenis Kelamin
+                                    </th>
+                                    <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                         No. Hp
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
@@ -41,9 +48,16 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $no=1;
+                                @endphp
+                                @foreach ($karyawans as $karyawan )
                               <tr>
                                     <td class="ps-4">
-                                        <p class="text-xs font-weight-bold mb-0">1</p>
+                                      <p class="text-xs font-weight-bold mb-0">{{ $no++ }}</p>
+                                    </td>
+                                    <td class="ps-4">
+                                        <p class="text-xs font-weight-bold mb-0">{{ $karyawan->nip }}</p>
                                     </td>
                                     <td>
                                         <div>
@@ -51,27 +65,30 @@
                                         </div>
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">UMai</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $karyawan->name }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">admin@mail.com</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $karyawan->user->email }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">0877</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $karyawan->jenis_kelamin }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <span class="badge badge-sm bg-gradient-success">Aktif</span>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $karyawan->no_hp }}</p>
                                     </td>
-                                    
+                                    <td class="text-center">
+                                        <span class="badge badge-sm bg-gradient-success">{{ $karyawan->user->status }}</span>
+                                    </td> 
                               </tr>
-                                
+                                @endforeach 
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-      </div>
-
+        </div>
+        {{-- {{ $karyawans }}
+        {{ $tamus }} --}}
       <div class="col-12">
         <div class="card mb-4 mx-4">
             <div class="card-header pb-0">
@@ -87,6 +104,9 @@
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr>
+                                <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+                                    No
+                                </th>
                                 <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
                                     ID
                                 </th>
@@ -117,9 +137,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $no=1;
+                            @endphp
+                            @foreach ($tamus as $tamu )
+                           
                           <tr>
                                 <td class="ps-4">
-                                    <p class="text-xs font-weight-bold mb-0">1</p>
+                                    <p class="text-xs font-weight-bold mb-0">{{ $no++ }}</p>
+                                </td>
+                                <td class="ps-4">
+                                    <p class="text-xs font-weight-bold mb-0">{{ $tamu->id }}</p>
                                 </td>
                                 <td>
                                     <div>
@@ -127,22 +155,22 @@
                                     </div>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs font-weight-bold mb-0">Rudi</p>
+                                    <p class="text-xs font-weight-bold mb-0">{{ $tamu->name }}</p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs font-weight-bold mb-0">tamu1@mail.com</p>
+                                    <p class="text-xs font-weight-bold mb-0">{{ $tamu->user->email }}</p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs font-weight-bold mb-0">Jl. Kemangi</p>
+                                    <p class="text-xs font-weight-bold mb-0">{{ $tamu->alamat }}</p>
                                 </td>
                                 <td class="text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">laki-laki</span>
+                                    <span class="text-secondary text-xs font-weight-bold">{{ $tamu->jenis_kelamin }}</span>
                                 </td>
                                 <td class="text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">0895395256262</span>
+                                    <span class="text-secondary text-xs font-weight-bold">{{ $tamu->no_hp }}</span>
                                 </td>
                                 <td class="text-center">
-                                    <span class="badge badge-sm bg-gradient-success">Aktif</span>
+                                    <span class="badge badge-sm bg-gradient-success">{{ $tamu->user->status }}</span>
                                 </td>
                                 <td class="text-center">
                                     <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="edit user">
@@ -156,7 +184,7 @@
                                     </span>
                                 </td>
                           </tr>
-                            
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
