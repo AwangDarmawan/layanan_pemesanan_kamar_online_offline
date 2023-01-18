@@ -14,7 +14,7 @@ class CreateKaryawansTable extends Migration
     public function up()
     {
         Schema::create('karyawans', function (Blueprint $table) {
-            $table->id();
+            $table->increments(id);
             $table->integer('nip')->length(12)->unique();
             $table->string('name');
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);

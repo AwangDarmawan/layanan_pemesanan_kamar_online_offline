@@ -14,7 +14,7 @@ class CreateTamusTable extends Migration
     public function up()
     {
         Schema::create('tamus', function (Blueprint $table) {
-            $table->id();
+            $table->increments(id);
             $table->string('name')->length(20);
             $table->text('alamat')->length(30);
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
