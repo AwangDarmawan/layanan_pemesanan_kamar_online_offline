@@ -14,7 +14,8 @@ class CreateKamarsTable extends Migration
     public function up()
     {
         Schema::create('kamars', function (Blueprint $table) {
-            $table->varchar('no_kamar',5);
+            $table->increments('id');
+            $table->string('no_kamar')->length(5);
             $table->bigInteger('jenis_kamar_id')->unsigned();
             $table->foreign('jenis_kamar_id')
             ->references('id')

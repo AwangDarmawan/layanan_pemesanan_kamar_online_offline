@@ -14,10 +14,10 @@ class CreateDetailReservasisTable extends Migration
     public function up()
     {
         Schema::create('detail_reservasis', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('kode_reservasi', 10);
-            $table->integer('lama_menginap');
-            $table->integer('total_bayar');
+            $table->increments('id');
+            $table->unsignedInteger('kode_reservasi');
+            $table->integer('lama_menginap')->length(5);
+            $table->integer('total_bayar')->length(10);
             $table->timestamps();
 
             $table->foreign('kode_reservasi')->references('id')->on('reservasis')

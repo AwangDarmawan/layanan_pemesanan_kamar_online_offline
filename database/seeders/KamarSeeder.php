@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class KamarSeeder extends Seeder
 {
@@ -41,7 +42,7 @@ class KamarSeeder extends Seeder
                 'no_kamar' => '1B',
                 'jenis_kamar_id' => 2,
                 'status_id' => 1,
-                'harga' => 400000,
+                'harga' => '400000',
                 'foto_kamar' => '121jpg',
                 'foto_wc' => '122jpg',
                 'deskripsi' => 'Sangat ramah disuasana suami dan istri yang ingin menginap, dengan fasilitas malam pertama menyediakan 1 tempat tidur berukuran besar',

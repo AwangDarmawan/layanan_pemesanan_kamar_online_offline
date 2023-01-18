@@ -15,20 +15,31 @@ class CreateReservasisTable extends Migration
     {
         Schema::create('reservasis', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('tamu_id')->unsigned();
-            $table->bigInteger('karyawan_id')->unsigned();
-            $table->bigInteger('kamar_id')->unsigned();
+            $table->unsignedInteger('tamu_id');
+            $table->foreign('tamu_id')
+            ->references('id')
+            ->on('tamus')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->unsignedInteger('karyawan_id');
+            $table->foreign('karyawan_id')
+            ->references('id')
+            ->on('karyawans')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->unsignedInteger('kamar_id');
+            $table->foreign('kamar_id')
+            ->references('id')
+            ->on('kamars')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->integer('jumlah_kamar');
             $table->date('tgl_masuk');
             $table->date('tgl_keluar');
             $table->timestamps();
 
-            $table->foreign('tamu_id')->references('id')->on('tamus')
-            ->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('karyawan_id')->references('id')->on('karyawans')
-            ->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('kamar_id')->references('no_kamar')->on('kamars')
-            ->onDelete('cascade')->onUpdate('cascade');
+            
+            
         });
     }
 
