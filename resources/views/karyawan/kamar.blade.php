@@ -31,6 +31,9 @@
                                     <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 me-0 pe-0">
                                         No
                                     </th>
+                                    <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 me-0 pe-0">
+                                        No Kamar
+                                    </th>
                                     <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7 px-0 mx-0">
                                         Foto
                                     </th>
@@ -52,28 +55,37 @@
                                 </tr>
                             </thead>
                             <tbody>
+
+                                @php
+                                    $no=1;
+                                @endphp
+                                @foreach ($kamars as $kamar )
+
                                 <tr>
                                     <td class="ps-4">
-                                        <p class="text-xs font-weight-bold mb-0">1</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $no++ }}</p>
+                                    </td>
+                                    <td class="ps-4">
+                                        <p class="text-xs font-weight-bold mb-0">{{ $kamar->id }}</p>
                                     </td>
                                     <td class="mx-0 px-0">
-                                        <div class="pe-0 me-0 ms-5">
-                                            <img src="../assets/img/team-2.jpg" height="100px" width="100px" class="rounded img-fluid">
-                                            <img src="../assets/img/team-2.jpg" height="100px" width="100px" class="rounded img-fluid">
-                                            <img src="../assets/img/team-2.jpg" height="100px" width="100px" class="rounded img-fluid">
+                                        <div class="px-0 mx-0">
+                                            <span><img src="../assets/img/team-2.jpg" height="100px" width="100px" class="rounded img-fluid"></span>
+                                            <span><img src="../assets/img/team-2.jpg" height="100px" width="100px" class="rounded img-fluid"></span>
+                                            <span><img src="../assets/img/team-2.jpg" height="100px" width="100px" class="rounded img-fluid"></span>
                                         </div>
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Vip</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $kamar->jenisKamar->name }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">500000</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $kamar->harga }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor cupiditate quidem voluptatum?</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $kamar->deskripsi }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">terisi</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $kamar->statusKamar->name }}</p>
                                     </td>
                                     <td class="text-center">
                                         <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="edit data kamar">
@@ -86,7 +98,7 @@
                                         </span>
                                     </td>
                                 </tr>
-                                
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

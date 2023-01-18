@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -19,7 +20,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username',
-        'name',
         'email',
         'password',
     ];
@@ -42,4 +42,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // public static function getDataUsers(){
+
+        
+    //     $user = User::all();
+    //     $user_filter = [];
+
+    //     $no = 1;
+    //     for ($i=0; $i <$user->count(); $i++){
+    //         $user_filter[$i]['no'] = $no++;
+    //         $user_filter[$i]['email'] = $user[$i]->email;
+    //         // $user_filter[$i]['penulis'] = $user[$i]->penulis;
+    //         // $user_filter[$i]['tahun'] = $user[$i]->tahun;
+    //         // $user_filter[$i]['penerbit'] = $user[$i]->penerbit;
+
+    //     }
+
+    //     return $user_filter;
+    // }
 }

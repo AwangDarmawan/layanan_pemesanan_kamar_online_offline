@@ -5,6 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+
+//Models
+use App\Models\User;
+use App\Models\karyawan;
+use App\Models\Tamu;
+use App\Models\kamar;
+use App\Models\statusKamar;
+use App\Models\jenisKamar;
+use App\Models\Reservasi;
+use App\Models\detail_Reservasi;
+
 
 class KaryawanController extends Controller
 {
@@ -14,38 +26,25 @@ class KaryawanController extends Controller
     }
 
    
-    public function index(){
-        $user = Auth::user();
-        return view('karyawan.dashboard', compact('user'));
-    }
+   
 
-    public function pengguna(){
+    //CRUD controller
+    public function user(){
         $user = Auth::user();
-        return view('karyawan.user', compact('user'));
+        $data['karyawans'] = karyawan::all();
+        $data['tamus'] = Tamu::all();
+        return view('karyawan.user', compact('user','data'))->with($data);
     }
 
     public function kamar(){
         $user = Auth::user();
-        return view('karyawan.kamar', compact('user'));
+        $data['kamars'] = kamar::all();
+        return view('karyawan.kamar', compact('user','data'))->with($data);
     }
 
     public function tertunda(){
         $user = Auth::user();
-        return view('karyawan.tertunda', compact('user'));
-    }
-
-    public function konfirmasi(){
-        $user = Auth::user();
-        return view('karyawan.konfirmasi', compact('user'));
-    }
-
-    public function laporan(){
-        $user = Auth::user();
-        return view('karyawan.laporan', compact('user'));
-    }
-
-    public function profile(){
-        $user = Auth::user();
-        return view('karyawan.profile', compact('user'));
+        $data['reservasis'] = Reservasi::all();
+        return view('karyawan.tertunda', compact('user','data'))->with($data);
     }
 }

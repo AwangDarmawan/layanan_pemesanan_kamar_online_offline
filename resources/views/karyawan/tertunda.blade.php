@@ -28,31 +28,32 @@
                     </tr>
                   </thead>
                   <tbody>
-                    
+                    @foreach ($reservasis as $reservasi)
+                      
                     <tr>
                       <td class="ps-4"> 
-                        <p class="text-xs font-weight-bold mb-0">1</p>
+                        <p class="text-xs font-weight-bold mb-0">{{ $reservasi->no_reservasi }}</p>
                       </td>
                       <td> 
-                        <p class="text-xs font-weight-bold mb-0">12/2/2022</p>
+                        <p class="text-xs font-weight-bold mb-0">{{ $reservasi->tgl_masuk }}</p>
                       </td>
                       <td> 
-                        <p class="text-xs font-weight-bold mb-0">14/2/2022</p>
+                        <p class="text-xs font-weight-bold mb-0">{{ $reservasi->tgl_keluar }}</p>
                       </td>
                       <td> 
-                        <p class="text-xs font-weight-bold mb-0">B1</p>
+                        <p class="text-xs font-weight-bold mb-0">{{ $reservasi->kamar->id }}</p>
                       </td>
                       <td> 
-                        <p class="text-xs font-weight-bold mb-0">Rudi</p>
+                        <p class="text-xs font-weight-bold mb-0">{{ $reservasi->tamu->name }}</p>
                       </td>
                       <td> 
-                        <p class="text-xs font-weight-bold mb-0">Rudi@mail.com</p>
+                        <p class="text-xs font-weight-bold mb-0">{{ $reservasi->tamu->user->email }}</p>
                       </td>
                       <td> 
-                        <p class="text-xs font-weight-bold mb-0">0877xxxxxxxxx</p>
+                        <p class="text-xs font-weight-bold mb-0">{{ $reservasi->tamu->no_hp }}</p>
                       </td>
                       <td> 
-                        <p class="text-xs font-weight-bold mb-0">rp. 600.000</p>
+                        <p class="text-xs font-weight-bold mb-0">masih dicari</p>
                       </td>
                       <td>
                         <button type="button" class="btn bg-gradient-success m-1 p-2">
@@ -62,40 +63,8 @@
                         </button> 
                       </td>
                     </tr>
-                    <tr>
-                      <td class="ps-4"> 
-                        <p class="text-xs font-weight-bold mb-0">1</p>
-                      </td>
-                      <td > 
-                        <p class="text-xs font-weight-bold mb-0">12/2/2022</p>
-                      </td>
-                      <td> 
-                        <p class="text-xs font-weight-bold mb-0">14/2/2022</p>
-                      </td>
-                      <td> 
-                        <p class="text-xs font-weight-bold mb-0">B1</p>
-                      </td>
-                      <td> 
-                        <p class="text-xs font-weight-bold mb-0">Rudi</p>
-                      </td>
-                      <td> 
-                        <p class="text-xs font-weight-bold mb-0">Rudi@mail.com</p>
-                      </td>
-                      <td> 
-                        <p class="text-xs font-weight-bold mb-0">0877xxxxxxxxx</p>
-                      </td>
-                      <td> 
-                        <p class="text-xs font-weight-bold mb-0">rp. 600.000</p>
-                      </td>
-                      <td>
-                        <button type="button" class="btn bg-gradient-success m-1 p-2">
-                          <a href="#" class="m-1 p-0 " data-bs-toggle="tooltip" data-bs-original-title="konfirmasi reservasi">
-                            <i class="fas fa-lg fa-check text-center text-white m-0 p-0" aria-hidden="true"></i>
-                          </a>
-                        </button> 
-                      </td>
-                    </tr>
-                    
+                    @endforeach
+                   
                     
                   </tbody>
                 </table>

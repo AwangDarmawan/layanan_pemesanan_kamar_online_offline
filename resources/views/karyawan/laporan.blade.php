@@ -20,8 +20,8 @@
                   <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Check-out</th>
                   <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No Kamar</th>
                   <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Nama Tamu</th>
-                  
                   <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Total Bayar</th>
+                  <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Admin/Karyawan</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -43,10 +43,11 @@
                   <td> 
                     <p class="text-xs font-weight-bold mb-0">Rudi</p>
                   </td>
-                  
-                  
                   <td> 
                     <p class="text-xs font-weight-bold mb-0">rp. 600.000</p>
+                  </td>
+                  <td> 
+                    <p class="text-xs font-weight-bold mb-0">budi</p>
                   </td>
                   <td>
                     <span class="btn bg-gradient-success m-1 p-2">
@@ -78,6 +79,6 @@
       </div>
     </div>
   </div>
-</main>
+</div>
 
 @endsection
