@@ -14,13 +14,13 @@ class CreateDetailReservasisTable extends Migration
     public function up()
     {
         Schema::create('detail_reservasis', function (Blueprint $table) {
-            $table->id();
-            $table->char('reservasi_no', 10);
-            $table->foreignId('kamars_id')->constrained();
-            $table->integer('total_harga');
+            $table->increments('id');
+            $table->unsignedInteger('kode_reservasi');
+            $table->integer('lama_menginap')->length(5);
+            $table->integer('total_bayar')->length(10);
             $table->timestamps();
 
-            $table->foreign('reservasi_no')->references('no_reservasi')->on('reservasis')
+            $table->foreign('kode_reservasi')->references('id')->on('reservasis')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });

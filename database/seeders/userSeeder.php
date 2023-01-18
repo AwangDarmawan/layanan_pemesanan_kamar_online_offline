@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
 use Illuminate\Support\Facades\DB;
 
-class StatusKamarSeeder extends Seeder
+class userSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,26 +15,28 @@ class StatusKamarSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('status_kamars')->insert([
+        DB::table('users')->insert([
             [
                 'id' => 1,
-                'name' => 'Kosong',
+                'email' => 'user1@mail.com',
+                'username' => 'user1',
+                'password' => '12345678',
+                'role_id' => '2',
+                'status' => '1',
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now()
             ], 
             [
                 'id' => 2,
-                'name' => 'TerISi',
-                'created_at' => \Carbon\Carbon::now(),
-                'updated_at' => \Carbon\Carbon::now()
-            ], 
-            [
-                'id' => 3,
-                'name' => 'Dalam Perbaikan',
+                'email' => 'admin1@mail.com',
+                'username' => 'admin1',
+                'password' => '12345678',
+                'role_id' => '1',
+                'status' => '1',
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now()
             ]
-            
+
         ]);
     }
 }

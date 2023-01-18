@@ -14,7 +14,8 @@ class CreateKamarsTable extends Migration
     public function up()
     {
         Schema::create('kamars', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('no_kamar')->length(5);
             $table->bigInteger('jenis_kamar_id')->unsigned();
             $table->foreign('jenis_kamar_id')
             ->references('id')
@@ -22,15 +23,16 @@ class CreateKamarsTable extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->biginteger('harga');
-            $table->string('foto_kamar')->notnull();
-            $table->string('foto_wc')->notnull();
+            $table->string('foto_kamar');
+            $table->string('foto_wc');
+            $table->string('foto_ruangan')->nullable();
             $table->bigInteger('status_id')->unsigned();
             $table->foreign('status_id')
             ->references('id')
             ->on('status_kamars')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->string('foto_ruangan')->nullable();
+            $table->string('deskripsi');
 
             $table->timestamps();
 
