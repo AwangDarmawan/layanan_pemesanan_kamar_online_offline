@@ -9,6 +9,15 @@ class kamar extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'id',
+        'no_kamar',
+        'jenis_kamar_id',
+        'harga',
+        'deskripsi',
+        
+    ];
+
     public function jenisKamar(){
         return $this->belongsTo(jenisKamar::class, 'jenis_kamar_id', 'id');
     }

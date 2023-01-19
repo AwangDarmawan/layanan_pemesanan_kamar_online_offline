@@ -77,7 +77,11 @@
                                         <p class="text-xs font-weight-bold mb-0">{{ $karyawan->no_hp }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <span class="badge badge-sm bg-gradient-success">{{ $karyawan->user->status }}</span>
+                                        @if ( $karyawan->user->status == 1)
+                                            <span class="badge badge-sm bg-gradient-success">aktif</span>
+                                        @else
+                                            <span class="badge badge-sm bg-gradient-success">tidak aktif</span>
+                                        @endif
                                     </td> 
                               </tr>
                                 @endforeach 
@@ -170,7 +174,11 @@
                                     <span class="text-secondary text-xs font-weight-bold">{{ $tamu->no_hp }}</span>
                                 </td>
                                 <td class="text-center">
-                                    <span class="badge badge-sm bg-gradient-success">{{ $tamu->user->status }}</span>
+                                    @if ( $tamu->user->status == 1)
+                                         <span class="badge badge-sm bg-gradient-success">aktif</span>
+                                    @else
+                                        <span class="badge badge-sm bg-gradient-success">tidak aktif</span>
+                                    @endif
                                 </td>
                                 <td class="text-center">
                                     <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="edit user">
@@ -202,26 +210,27 @@
             <h4 class="modal-title text-center mt-4" id="exampleModalLabel">Masukan Data Tamu Baru</h4>
           
         <div class="modal-body">
-            <form>
+            <form method="post" action="{{ route('karyawan.tambah.pengguna') }}" >
+                @csrf
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Email address</label>
-                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                  <input type="email" class="form-control" placeholder="name@example.com " name="email" id="email" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Username</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="isi username">
+                    <input type="text" class="form-control" placeholder="isi username" name="username" id="username" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Password</label>
-                    <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="12345678">
+                    <input type="password" class="form-control" placeholder="12345678" name="passworrd" id="passworrd" required>
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Nama Lengkap</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="isi nama lengkap">
+                    <input type="text" class="form-control" placeholder="isi nama lengkap" name="name" id="name" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Alamat</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Jl. abc rt/rw kec. kab. prov.">
+                    <input type="text" class="form-control" placeholder="Jl. abc rt/rw kec. kab. prov." name="alamat" id="alamat" required>
                 </div>
                 <div class="row">
                 <div class="form-group col-md-3 pe-0">
@@ -233,14 +242,14 @@
                 </div>
                   <div class="form-group col-md-3 pe-0">
                     <label for="exampleFormControlInput1">Foto</label>
-                    <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="file" class="form-control" placeholder="name@example.com" name="foto" id="foto" required>
                   </div>
                   <div class="form-group col-md-6">
                     <label for="exampleFormControlInput1">NO. Hp</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0895XXXXXXXX">
+                    <input type="number" class="form-control" placeholder="0895XXXXXXXX" name="no_hp" id="no_hp" required>
                   </div>
                 </div>
-                <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2" >Batal</button>
+                <button type="button" class="btn bg-gradient-primary col-md-5 mt-2" data-dismiss="modal">Batal</button>
                 <span>
                 <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2 ms-1" >Simpan</button>
                 </span>

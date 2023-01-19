@@ -60,8 +60,30 @@ Route::get('karyawan/profile', [App\Http\Controllers\HomeController::class, 'pro
 ->middleware('karyawan');
 
 //Route CRUD
-// Route::get('karyawan/getPengguna', [App\Http\Controllers\KaryawanController::class, 'user'])
-// ->name('karyawan.user')
-// ->middleware('karyawan');
-//logout
-// Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'destroy'])->name('logout')->middleware('auth');
+//pengguna
+Route::post('karyawan/pengguna/tambah', [KaryawanController::class, 'tambah_Pengguna'])
+->name('karyawan.tambah.pengguna')
+->middleware('karyawan');
+
+//kamar
+Route::post('karyawan/kamar/tambah', [KaryawanController::class, 'tambah_kamar'])
+->name('karyawan.tambah.kamar')
+->middleware('karyawan');
+
+Route::patch('karyawan/kamar/edit', [KaryawanController::class, 'edit_kamar'])
+->name('karyawan.edit.kamar')
+->middleware('karyawan');
+
+    //get data ke form edit kamar
+    Route::get('admin/ajaxadmin/dataKamar/{id}', [KaryawanController::class, 'getDataKamar']);
+    
+    // Route::get('/kamar/{{ $kamar->id }}/edit', [KaryawanController::class, 'getDataKamar']);
+
+Route::delete('kamar/hapus/{id}', [KaryawanController::class, 'hapus_kamar'])
+->name('karyawan.hapus.kamar')
+->middleware('karyawan');
+
+//Reservasi
+Route::post('karyawan/reservasi/tambah', [KaryawanController::class, 'tambah_reservasi'])
+->name('karyawan.reservasi.tambah')
+->middleware('karyawan');

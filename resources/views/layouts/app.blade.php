@@ -81,6 +81,52 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  {{-- sweetalert2 --}}
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        @if(session('status'))
+            Swal.fire({
+                title: 'Congratulations!',
+                text: "{{ session('status') }}",
+                icon: 'Success',
+                timer: 3000
+            })
+        // @endif
+        // @if($errors->any())
+        //     @php
+        //         $message = '';
+        //         foreach($errors->all() as $error)
+        //         {
+        //             $message .= $error."<br/>";
+        //         }
+        //     @endphp
+        //     Swal.fire({
+        //         title: 'Error',
+        //         html: "{!! $message !!}",
+        //         icon: 'error',
+        //     })
+        // @endif
+
+        function deleteConfirmation(no_kamar)
+        {
+            var form = event.target.form;
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                icon: 'warning',
+                html: "Anda akan menghapus kamar no <strong>"+no_kamar+"</strong> dan tidak dapat mengembalikannya kembali",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus saja!',
+            }). then((result) => {
+                if(result.value) {
+                    form.submit();
+                }
+            });
+        }
+    </script>
+    @yield("js")
 </body>
 
 </html>

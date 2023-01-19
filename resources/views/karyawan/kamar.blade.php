@@ -3,14 +3,6 @@
 @section('content')
 
 <div>
-    {{-- <div class="alert alert-secondary mx-4" role="alert">
-        <span class="text-white">
-            <strong>Add, Edit, Delete features are not functional!</strong> This is a
-            <strong>PRO</strong> feature! Click <strong>
-            <a href="https://www.creative-tim.com/live/soft-ui-dashboard-pro-laravel" target="_blank" class="text-white">here</a></strong>
-            to see the PRO product!
-        </span>
-    </div> --}}
 
     <div class="row">
         <div class="col-12">
@@ -66,13 +58,35 @@
                                         <p class="text-xs font-weight-bold mb-0">{{ $no++ }}</p>
                                     </td>
                                     <td class="ps-4">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $kamar->id }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $kamar->no_kamar }}</p>
                                     </td>
                                     <td class="mx-0 px-0">
                                         <div class="px-0 mx-0">
-                                            <span><img src="../assets/img/team-2.jpg" height="100px" width="100px" class="rounded img-fluid"></span>
-                                            <span><img src="../assets/img/team-2.jpg" height="100px" width="100px" class="rounded img-fluid"></span>
-                                            <span><img src="../assets/img/team-2.jpg" height="100px" width="100px" class="rounded img-fluid"></span>
+                                            <span>
+                                                @if ($kamar->foto_kamar !== null)
+                                                <img src="{{ asset('storage/img/'.$kamar->foto_kamar) }}"height="100px" width="100px" class="rounded img-fluid"/>
+                                                @else
+                                                    [foto belum di input]
+                
+                                                @endif
+                                            </span>
+                                            <span>
+                                                @if ($kamar->foto_wc !== null)
+                                                <img src="{{ asset('storage/img/'.$kamar->foto_wc) }}"height="100px" width="100px" class="rounded img-fluid"/>
+                                                @else
+                                                    [foto belum di input]
+                
+                                                @endif
+                                            </span>
+                                            <span>
+                                                @if ($kamar->foto_ruangan !== null)
+                                                <img src="{{ asset('storage/img/'.$kamar->foto_ruangan) }}" height="100px" width="100px" class="rounded img-fluid"/>
+                                                @else
+                                                    [foto belum di input]
+                
+                                                @endif
+                                            </span>
+                                            {{-- <span><img src="../assets/img/team-2.jpg" height="100px" width="100px" class="rounded img-fluid"></span> --}}
                                         </div>
                                     </td>
                                     <td class="text-center">
@@ -85,16 +99,26 @@
                                         <p class="text-xs font-weight-bold mb-0">{{ $kamar->deskripsi }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $kamar->statusKamar->name }}</p>
+                                        @if ( $kamar->statusKamar->id == 1)
+                                            <span class="badge badge-sm bg-gradient-success">{{ $kamar->statusKamar->name }}</span>
+                                        @elseif ($kamar->statusKamar->id == 2)
+                                            <span class="badge badge-sm bg-gradient-info">{{ $kamar->statusKamar->name }}</span>
+                                        @else
+                                            <span class="badge badge-sm bg-gradient-danger">{{ $kamar->statusKamar->name }}</span>
+                                        @endif
+                                        
                                     </td>
                                     <td class="text-center">
-                                        <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="edit data kamar">
-                                            <i class="fas fa-user-edit text-secondary" type="button" data-bs-toggle="modal" data-bs-target="#editKamarModal"></i>
-                                        </a>
+                                        {{-- <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="edit data kamar"> --}}
+                                            <i class="fas fa-user-edit text-secondary" type="button" data-bs-toggle="modal" data-bs-target="#editKamarModal" data-id="{{ $kamar->id }}" id="btn-edit-kamar"></i>
+                                        {{-- </a> --}}
                                         <span>
+                                            {!! Form::open(['url' => 'kamar/hapus/'.$kamar->id, 'method' => 'DELETE']) !!}
                                             <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="hapus kamar">
-                                                <i class="cursor-pointer fas fa-trash text-danger"></i>
+                                                {{ Form::button('', ['class' => 'cursor-pointer fas fa-trash text-danger bg-transparent border-0', 'onclick' => "deleteConfirmation('".$kamar->no_kamar."')"]) }}
                                             </a>
+                                            {!! Form::close() !!}
+                                            
                                         </span>
                                     </td>
                                 </tr>
@@ -108,7 +132,7 @@
     </div>
 </div>
  
-<!-- Modal tambah tamu-->
+<!-- Modal tambah kamar-->
 <div class="modal fade" id="tamabahKamarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -116,43 +140,47 @@
                 <h4 class="modal-title text-center mt-4" id="exampleModalLabel">Masukan Data Kamar</h4>
             
             <div class="modal-body">
-                <form>
+                <form method="post" action="{{ route('karyawan.tambah.kamar') }}" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group">
-                    <label for="exampleFormControlInput1">No Kamar</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="A1">
+                    <label for="no_kamar">No Kamar</label>
+                    <input type="text" class="form-control" placeholder="A1" name="no_kamar" id="no_kamar">
                     </div>
                     
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">harga</label>
-                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="masukan dalam rupiah">
+                        <label for="harga">harga</label>
+                        <input type="number" class="form-control" placeholder="masukan dalam rupiah" name="harga" id="harga">
                     </div>
                     <div class="form-group col-md-6 pe-0">
-                        <label for="exampleFormControlInput1">Jenis Kamar</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>A</option>
-                            <option>B</option>
+                        <label for="jenis_kamar_id">Jenis Kamar</label>
+                        <select class="form-control" name="jenis_kamar_id" id="jenis_kamar_id">
+                            <option>pilih</option>
+                            
+                            @foreach ($kamars as $kamar)
+                               <option value={{ $kamar->jenis_kamar_id }}>{{  $kamar->jenisKamar->name }}</option> 
+                            @endforeach
+                            
                         </select>
                     </div>
                     <div class="row">
-                        
                         <div class="form-group col-md-4 pe-0">
-                            <label for="exampleFormControlInput1">Foto kamar</label>
-                            <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="uplode foto">
+                            <label for="foto_kamar">Foto kamar</label>
+                            <input type="file" class="form-control" placeholder="uplode foto" name="foto_kamar" id="foto_kamar">
                         </div>
                         <div class="form-group col-md-4 pe-0">
-                            <label for="exampleFormControlInput1">Foto Wc</label>
-                            <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="uplode foto">
+                            <label for="">Foto Wc</label>
+                            <input type="file" class="form-control" placeholder="uplode foto" name="foto_wc" id="foto_wc">
                         </div>
                         <div class="form-group col-md-4 pe-0">
-                            <label for="exampleFormControlInput1">Foto Ruangan Lain</label>
-                            <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="uplode foto">
+                            <label for="">Foto Ruangan Lain</label>
+                            <input type="file" class="form-control" placeholder="uplode foto" name="foto_ruangan" id="foto_ruangan">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Deskripsi</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <label for="deskripsi">Deskripsi</label>
+                        <textarea class="form-control" rows="3" name="deskripsi" id="deskripsi"></textarea>
                     </div>
-                    <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2" >Batal</button>
+                    <button type="button" class="btn bg-gradient-primary col-md-5 mt-2" data-bs-dismiss="modal" >Batal</button>
                     <span>
                     <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2 ms-1" >Simpan</button>
                     </span>
@@ -163,7 +191,66 @@
     </div>
 </div>
 
-  <!-- Modal edit kamar-->
+<!-- Modal tambah kamar nyoba lareavel colective-->
+{{-- <div class="modal fade" id="tamabahKamarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            
+                <h4 class="modal-title text-center mt-4" id="exampleModalLabel">Masukan Data Kamar</h4>
+            
+            <div class="modal-body">
+                {!! Form::open(['route' => ['karyawan.tambah.kamar']]) !!}
+                    <div class="form-group">
+                        
+                        {{ Form::label('no_kamar', 'No Kamar') }}
+                        {{ Form::text('no_kamar', null, ['class' => 'form-control', 'placeholder'=>'A1', 'required' => 'true']) }}
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('harga', 'Harga') }}
+                        {{ Form::text('harga', null, ['class' => 'form-control', 'placeholder'=>'masukan dalam rupiah', 'required' => 'true']) }}
+                    </div>
+                    <div class="form-group col-md-6 pe-0">
+                        {{ Form::label('jenis_kamar_id', 'Jenis Kamar') }}
+                        {{ Form::select('jenis_kamar_id', ['0' , '1', '2', 'class'=>'form-control'],1, ['class' => 'form-control',
+                        'required' => 'true']) }}
+                        
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 pe-0">
+                            
+                            {{ Form::label('foto_kamar', 'Foto Kamar') }}
+                            {{ Form::file('foto_kamar', ['class' => 'form-control']) }}
+                            
+                        </div>
+                        <div class="form-group col-md-4 pe-0">
+                            {{ Form::label('foto_wc', 'Foto WC') }}
+                            {{ Form::file('foto_wc', ['class' => 'form-control']) }}
+                            
+                        </div>
+                        <div class="form-group col-md-4 pe-0">
+                            {{ Form::label('foto_ruangan', 'Foto Ruangan Lain') }}
+                            {{ Form::file('foto_ruangan', ['class' => 'form-control']) }}
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('deskripsi', 'Deskripsi') }}
+                        {{ Form::textarea('deskripsi', null, ['class' => 'form-control', 'placeholder'=>'deskripsi kamar', 'required' => 'true', 'rows'=>'3']) }}
+                        
+                    </div>
+                    <button type="button" class="btn bg-gradient-primary col-md-5 mt-2" data-dismiss="modal" >Batal</button>
+                    <span>
+                    {{ Form::submit('Simpan',['class'=>'btn bg-gradient-primary col-md-5 mt-2 ms-1']) }}
+                    </span>
+                {!! Form::close() !!}
+                
+            </div>
+            
+        </div>
+    </div>
+</div> --}}
+
+<!-- Modal edit kamar-->
 <div class="modal fade" id="editKamarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -171,54 +258,139 @@
             <h4 class="modal-title text-center mt-4" id="exampleModalLabel">Edit Data Kamar</h4>
             
             <div class="modal-body mx-2">
-                <form>
+                <form method="post" action="{{ route('karyawan.edit.kamar') }}" enctype="multipart/form-data">
+                    @csrf
+                    @method('PATCH')
+                    <input type="hidden" name="id_kamar" id="edit_kamar">
                     <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">No</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1">
+                            <label for="edit-no">No_Kamar</label>
+                            <input type="text" class="form-control" id="edit-no" name="no_kamar">
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Harga</label>
-                            <input type="number" class="form-control" id="exampleFormControlInput1">
+                            <label for="edit-harga">Harga</label>
+                            <input type="number" class="form-control" id="edit-harga" name="harga">
                         </div>
-                        <div class="form-group col-md-6 pe-0">
-                            <label for="exampleFormControlInput1">Jenis Kamar</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>A</option>
-                                <option>B</option>
+                        <div class="form-group col-md-10 pe-0">
+                            <label for="edit-jenis">Jenis Kamar</label>
+                            <select class="form-control" id="edit-jenis" name="jenis_kamar_id">
+                                <option>pilih</option>
+                                @foreach ($kamars as $kamar)
+                               <option value={{ $kamar->jenis_kamar_id }}>{{  $kamar->jenisKamar->name }}</option> 
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Deskripsi</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <label for="edit-deskripsi">Deskripsi</label>
+                            <textarea class="form-control" id="edit-deskripsi" rows="3" name="deskripsi"></textarea>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-6  pe-0">
+                                <label for="edit-foto_kamar">Foto Kamar</label>
+                                <div class="form-group" id="image-kamar"></div>
+                                <div class="form-group ">
+                                    <input type="file" class="form-control" id="edit-foto_kamar" name="foto_kamar">
+                                </div>
+                            </div>
+                            <div class="col-md-6 ms-0 pe-0">
+                                <label for="edit-foto_wc">Foto Wc</label>
+                                <div class="form-group" id="image-wc"></div>
+                                <div class="form-group">
+                                    <input type="file" class="form-control" id="edit-foto_wc" name="foto_wc">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ps-0 ms-0">
+                            <label for="edit-foto_ruangan">Foto Ruangan Lain</label>
+                            <div class="form-group" id="image-ruangan"></div>
+                            <div class="form-group col-md-6">
+                                <input type="file" class="form-control" id="edit-foto_ruangan" name="foto_ruangan">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <input type="hidden" name="id" id="edit-id"/>
+                    <input type="hidden" name="old_foto_kamar" id="edit-old-foto_kamar"/>
+                    <input type="hidden" name="id" id="edit-id"/>
+                    <input type="hidden" name="old_foto_wc" id="edit-old-foto_wc"/>
+                    <input type="hidden" name="id" id="edit-id"/>
+                    <input type="hidden" name="old_foto_ruangan" id="edit-old-foto_ruangan"/> 
+                    <button type="button" class="btn bg-gradient-primary col-md-5 mt-2" data-bs-dismiss="modal">Batal</button>
+                <span>
+                    <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2 ms-1" >Simpan</button>
+                </span>
+                </form>
+            </div>
+
+            
+        </div>
+    </div>
+</div> 
+
+{{-- edit kamar nyoba laravel collective --}}
+{{-- <div class="modal fade" id="editKamarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            
+            <h4 class="modal-title text-center mt-4" id="exampleModalLabel">Edit Data Kamar</h4>
+            
+            <div class="modal-body mx-2">
+                {!! Form::model($kamar, ['url' => 'kamar/'.$kamar->id, 'method' => 'PUT']) !!}
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ Form::label('no_kamar', 'No Kamar') }}
+                            {{ Form::text('no_kamar', null, ['class' => 'form-control']) }}
+                            
+                        </div>
+                        <div class="form-group">
+                            {{ Form::label('harga', 'Harga') }}
+                            {{ Form::text('harga', null, ['class' => 'form-control', ]) }}
+                           
+                        </div>
+                        <div class="form-group col-md-6 pe-0">
+                            {{ Form::label('jenis_kamar_id', 'Jenis Kamar') }}
+                            {{ Form::select('jenis_kamar_id', ['0' , '1', '2', 'class'=>'form-control'],1, ['class' => 'form-control',
+                            'required' => 'true']) }}
+                        </div>
+                        <div class="form-group">
+                            {{ Form::label('deskripsi', 'Deskripsi') }}
+                            {{ Form::textarea('deskripsi', null, ['class' => 'form-control', 'rows'=>'3']) }}
                         </div>
                         
                     </div>
                     <div class="col-md-6">
+                    
                         <div class="form-group" id="image-area"></div>
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Foto Kamar</label>
-                            <input type="file" class="form-control" id="exampleFormControlInput1">
+                            {{ Form::label('foto_kamar', 'Foto Kamar') }}
+                            <div class="form-group" id="image-area"><img src="{{ asset('storage/img/'.$kamar->foto_kamar) }}"height="100px" width="100px" class="rounded img-fluid"/></div>
+                            {{ Form::file('foto_kamar', ['class' => 'form-control']) }}
                         </div>
                         <div class="form-group" id="image-area"></div>
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Foto Wc</label>
-                            <input type="file" class="form-control" id="exampleFormControlInput1">
+                            <label for="edit-foto_wc">Foto Wc</label>
+                            <input type="file" class="form-control" id="edit-foto_wc" name="">
                         </div>
                         <div class="form-group" id="image-area"></div>
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Foto Ruangan Lain</label>
-                            <input type="file" class="form-control" id="exampleFormControlInput1">
+                            <label for="edit-foto_ruangan">Foto Ruangan Lain</label>
+                            <input type="file" class="form-control" id="edit-foto_ruangan" name="">
                         </div>
-                    </div>
+                       
                 </div>
-                
-                <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2" >Batal</button>
+                    <input type="hidden" name="id" id="edit-id"/>
+                    <input type="hidden" name="old_foto_kamar" id="edit-old-foto_kamar"/>
+                    
+                <button type="button" class="btn bg-gradient-primary col-md-5 mt-2" data-dismiss="modal">Batal</button>
                 <span>
                 <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2 ms-1" >Simpan</button>
                 </span>
-                </form>
+                {!! Form::close() !!}
             </div>
             
             
@@ -226,6 +398,64 @@
             
         </div>
     </div>
-</div>
+</div> --}}
+@stop
 
-@endsection
+@section('js')
+    <script>
+        $(function(){
+            $(document).on('click','#btn-edit-kamar', function(){
+                let id = $(this).data('id');
+                $('#image-kamar').empty();
+                $('#image-wc').empty();
+                $('#image-ruangan').empty();
+
+                $.ajax({
+                    type: "get",
+                    url: "{{ url('/admin/ajaxadmin/dataKamar') }}/"+id,
+                    dataType: 'json',
+                    success: function(res){
+                        console.log(res);
+                        $('#edit_kamar').val(res.id);
+                        $('#edit-no').val(res.no_kamar);
+                        $('#edit-harga').val(res.harga);
+
+                        $('#edit-jenis').val(res.jenis_kamar_id);
+                        $('#edit-deskripsi').val(res.deskripsi);
+                        $('#edit-id').val(res.id);
+                        $('#edit-old-foto_kamar').val(res.foto_kamar);
+                        $('#edit-old-foto_wc').val(res.foto_wc);
+                        $('#edit-old-foto_ruangan').val(res.foto_ruangan);
+
+                        if (res.foto_kamar !== null) {
+                            $('#image-kamar').append("<img src='/storage/img/"+res.foto_kamar+"' width='150px'/>");
+
+                        }else{
+                            $('#image-kamar').append('[Gambar tidak tersedia]');
+
+                        }
+                        if (res.foto_wc !== null) {
+                            $('#image-wc').append("<img src='/storage/img/"+res.foto_wc+"' width='150px'/>");
+
+                        }else{
+                            $('#image-wc').append('[Gambar tidak tersedia]');
+
+                        }
+                        if (res.foto_ruangan !== null) {
+                            $('#image-ruangan').append("<img src='/storage/img/"+res.foto_ruangan+"' width='150px'/>");
+
+                        }else{
+                            $('#image-ruangan').append('[Gambar tidak tersedia]');
+
+                        }
+
+                    },
+                });
+            });
+        });
+
+        
+    </script>
+
+
+@stop
