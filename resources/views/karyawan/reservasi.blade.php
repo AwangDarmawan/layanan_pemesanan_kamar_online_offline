@@ -26,7 +26,7 @@
         <div class="card ms-4 col-md-5" style="border-top-left-radius:0px;border-top-right-radius:0px;">
             
             <div class="card-body pt-2">
-                <form>
+                <form action="" method="POST">
                     <h6 class="">Data Tamu</h6>
                     <div class="form-group">
                       <label for="exampleFormControlInput1">Nama</label>

@@ -15,7 +15,7 @@ class CreateKamarsTable extends Migration
     {
         Schema::create('kamars', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('no_kamar')->length(5);
+            $table->string('no_kamar')->length(5)->unique();
             $table->bigInteger('jenis_kamar_id')->unsigned();
             $table->foreign('jenis_kamar_id')
             ->references('id')
@@ -26,7 +26,7 @@ class CreateKamarsTable extends Migration
             $table->string('foto_kamar');
             $table->string('foto_wc');
             $table->string('foto_ruangan')->nullable();
-            $table->bigInteger('status_id')->unsigned();
+            $table->bigInteger('status_id')->unsigned()->default(1);
             $table->foreign('status_id')
             ->references('id')
             ->on('status_kamars')
