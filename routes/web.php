@@ -63,5 +63,23 @@ Route::get('karyawan/profile', [App\Http\Controllers\KaryawanController::class, 
 ->name('karyawan.profile')
 ->middleware('karyawan');
 
-//logout
-// Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'destroy'])->name('logout')->middleware('auth');
+
+
+
+//tamu Route
+Route::get('tamu/home', function () {
+    return view('tamu.halaman');
+})->name('tamu.home');
+Route::get('tamu/kamar', function () {
+    return view('tamu.kamar');
+})->name('tamu.kamar');
+Route::get('tamu/tentang', function () {
+    return view('tamu.tentang');
+})->name('tamu.tentang');
+Route::get('tamu/kontak', function () {
+    return view('tamu.kontak');
+})->name('tamu.kontak');
+
+Route::get('tamu/kamar/pesan', function () {
+    return view('components.ieu');
+})->name('tamu.pesan');
