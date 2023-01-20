@@ -25,4 +25,6 @@ class Reservasi extends Model
     public function kamar(){
         return $this->belongsTo(kamar::class, 'kamar_id', 'id');
     }
+
+   
 }

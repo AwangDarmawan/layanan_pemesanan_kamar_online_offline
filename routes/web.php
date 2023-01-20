@@ -106,3 +106,13 @@ Route::get('tamu/profil',[App\Http\Controllers\HomeController::class, 'profil'])
 
 Route::get('tamu/pesanan',[App\Http\Controllers\HomeController::class, 'pesanan'])->name('tamu.pesanan')->middleware('auth');
 Route::put('tamu/pesanan/bukti_pembayaran',[App\Http\Controllers\HomeController::class, 'update_pesanan'])->name('tamu.pesanan.bukti_pembayaran')->middleware('auth');
+
+
+//EXPORT
+Route::get('karyawan/reservasi/export', [KaryawanController::class, 'export'])
+->name('karyawan.export')
+->middleware('karyawan');
+Route::get('karyawan/reservasi/pdf', [KaryawanController::class, 'pdf'])
+->name('karyawan.print')
+->middleware('karyawan');
+

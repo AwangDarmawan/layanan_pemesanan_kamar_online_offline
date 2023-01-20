@@ -19,6 +19,9 @@ use App\Models\jenisKamar;
 use App\Models\Reservasi;
 use App\Models\detail_Reservasi;
 
+use App\Exports\ReservasiExport;
+use Excel;
+use PDF;
 
 class KaryawanController extends Controller
 {
@@ -273,6 +276,21 @@ class KaryawanController extends Controller
         $user = Auth::user();
         $data['karyawans'] = karyawan::all();
         return view('karyawan.profile', compact('user','data'))->with($data);
+    }
+
+
+    //EXPORT
+    public function export(){
+        return Excel::download(new ReservasiExport, 'reservasi.xlsx');
+    }
+
+
+    public function pdf()
+    {
+        $data['reservasis'] = Reservasi::all();
+        $pdf = PDF::loadview('karyawan.pdf', $data);
+
+        return $pdf->stream('coba_pdf.pdf');
     }
 
 
