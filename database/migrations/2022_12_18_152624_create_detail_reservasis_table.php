@@ -22,7 +22,12 @@ class CreateDetailReservasisTable extends Migration
             $table->foreign('kode_reservasi')->references('id')->on('reservasis')
             ->onDelete('cascade')
             ->onUpdate('cascade');
+            $table->unsignedInteger('karyawan_id');
+            $table->foreign('karyawan_id')->references('id')->on('karyawans')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->string('bukti_pembayaran');
+            
         });
     }
 

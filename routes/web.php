@@ -23,11 +23,11 @@ Auth::routes();
 Route::get('/home',[App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 //akses admin home
-Route::get('karyawan/home', [App\Http\Controllers\HomeController::class, 'dashboard'])
+Route::get('karyawan/home', [KaryawanController::class, 'dashboard'])
 ->name('karyawan.home')
 ->middleware('karyawan');
 
-Route::get('karyawan/dashboard', [KaryawanController::class, 'user'])
+Route::get('karyawan/dashboard', [KaryawanController::class, 'dashboard'])
 ->name('karyawan.dashboard')
 ->middleware('karyawan');
 
@@ -64,6 +64,11 @@ Route::get('karyawan/profile', [KaryawanController::class, 'profile'])
 Route::post('karyawan/pengguna/tambah', [KaryawanController::class, 'tambah_Pengguna'])
 ->name('karyawan.tambah.pengguna')
 ->middleware('karyawan');
+
+Route::delete('kamar/hapus/{id}', [KaryawanController::class, 'hapus_user'])
+->name('karyawan.hapus.user')
+->middleware('karyawan');
+
 
 //kamar
 Route::post('karyawan/kamar/tambah', [KaryawanController::class, 'tambah_kamar'])

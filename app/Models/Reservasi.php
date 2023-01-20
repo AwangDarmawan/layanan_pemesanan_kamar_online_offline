@@ -12,6 +12,7 @@ class Reservasi extends Model
         'kamar_id',
         'tgl_masuk',
         'tgl_keluar',
+        'jumlah_hari',
         'bukti_pembayaran'
     ];
     use HasFactory;

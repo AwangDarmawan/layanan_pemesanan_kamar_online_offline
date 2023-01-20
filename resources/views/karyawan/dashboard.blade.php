@@ -17,7 +17,7 @@
               </div>
             </div>
             <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+              <div class="icon icon-shape bg-gradient-dark shadow text-center border-radius-md">
                 <i class="fas fa-door-open text-lg opacity-10" aria-hidden="true"></i>
               </div>
             </div>
@@ -39,7 +39,7 @@
               </div>
             </div>
             <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+              <div class="icon icon-shape bg-gradient-dark shadow text-center border-radius-md">
                 <i class="fas fa-door-closed text-lg opacity-10" aria-hidden="true"></i>
               </div>
             </div>
@@ -61,7 +61,7 @@
               </div>
             </div>
             <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+              <div class="icon icon-shape bg-gradient-dark shadow text-center border-radius-md">
                 <i class="fas fa-tools text-lg opacity-10" aria-hidden="true"></i>
               </div>
             </div>
@@ -83,7 +83,7 @@
               </div>
             </div>
             <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+              <div class="icon icon-shape bg-gradient-dark shadow text-center border-radius-md">
                 <i class="fas fa-hotel text-lg opacity-10" aria-hidden="true"></i>
               </div>
             </div>
@@ -109,7 +109,7 @@
               </div>
             </div>
             <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
-              <div class="bg-gradient-primary border-radius-lg h-100">
+              <div class="bg-gradient-dark border-radius-lg h-100">
                 <img src="../assets/img/shapes/waves-white.svg" class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves">
                 <div class="position-relative d-flex align-items-center justify-content-center h-100">
                   <img class="w-100 position-relative z-index-2 pt-4" src="../assets/img/illustrations/rocket-white.png" alt="rocket">

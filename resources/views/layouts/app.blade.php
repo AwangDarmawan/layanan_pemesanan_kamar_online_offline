@@ -1,18 +1,4 @@
-<!--
-=========================================================
-* Soft UI Dashboard - v1.0.3
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 
 
@@ -90,25 +76,28 @@
                 title: 'Congratulations!',
                 text: "{{ session('status') }}",
                 icon: 'Success',
+                confirmButtonColor: '#252f40',
                 timer: 3000
             })
-        // @endif
-        // @if($errors->any())
-        //     @php
-        //         $message = '';
-        //         foreach($errors->all() as $error)
-        //         {
-        //             $message .= $error."<br/>";
-        //         }
-        //     @endphp
-        //     Swal.fire({
-        //         title: 'Error',
-        //         html: "{!! $message !!}",
-        //         icon: 'error',
-        //     })
-        // @endif
+        @endif
 
-        function deleteConfirmation(no_kamar)
+          @if($errors->any())
+            @php
+                $message = '';
+                foreach($errors->all() as $error)
+                {
+                    $message .= $error."<br/>";
+                }
+            @endphp
+            Swal.fire({
+                title: 'Error',
+                html: "{!! $message !!}",
+                icon: 'error',
+                confirmButtonColor: '#252f40',
+            })
+        @endif
+
+        function deleteKamarConfirmation(no_kamar)
         {
             var form = event.target.form;
             Swal.fire({
@@ -116,8 +105,25 @@
                 icon: 'warning',
                 html: "Anda akan menghapus kamar no <strong>"+no_kamar+"</strong> dan tidak dapat mengembalikannya kembali",
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                confirmButtonColor: '#252f40',
+                cancelButtonColor: '#8392ab',
+                confirmButtonText: 'Ya, hapus saja!',
+            }). then((result) => {
+                if(result.value) {
+                    form.submit();
+                }
+            });
+        }
+        function deleteConfirmation(name)
+        {
+            var form = event.target.form;
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                icon: 'warning',
+                html: "Anda akan menghapus user dengan nama <strong>"+name+"</strong> dan tidak dapat mengembalikannya kembali",
+                showCancelButton: true,
+                confirmButtonColor: '#252f40',
+                cancelButtonColor: '#8392ab',
                 confirmButtonText: 'Ya, hapus saja!',
             }). then((result) => {
                 if(result.value) {

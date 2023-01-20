@@ -18,32 +18,35 @@
                         <th scope="col">JENIS KAMAR</th>
                         <th scope="col">CHECK-IN</th>
                         <th scope="col">CHECK-OUT</th>
+                        <th scope="col">TOTAL BAYAR</th>
                         <th scope="col">BUKTI PEMBAYARAN</th>
                         <th scope="col">STATUS</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $no=1;
+                    @endphp
                     @foreach ($reservasi as $key => $data)
                         <tr>
-                            <th scope="row">$key</th>
+                            <th scope="row">{{ $no++ }}</th>
                             <td>{{ $data->kamar->no_kamar }}</td>
                             <td>{{ $data->kamar->jenisKamar->name }}</td>
                             <td>{{ $data->tgl_masuk }}</td>
                             <td>{{ $data->tgl_keluar }}</td>
+                            <td>{{ $data->total_pembayaran }}</td>
                             <td>
-                                {{-- <button type="button" class="btn btn-primary btnReservasi" data-toggle="modal"
-                                    data-target="#buktiPembayaran" data-id="{{ $data->id }}">
-                                    Detail
-                                </button> --}}
+                                
                                 @if ($data->bukti_pembayaran)
                                     <img src="{{ asset("storage/$data->bukti_pembayaran") }}" width="200px" height="200px">
                                 @else
                                     <a class="btn btn-primary popup-with-form btnReservasi" href="#buktiReservasi"
-                                        data-id="{{ $data->id }}">Bukti
+                                        data-id="{{ $data->id }}">Uplode Bukti
                                         Pembayaran</a>
                                 @endif
 
                             </td>
+                            <td>{{ $data->status_reservasi }}</td>
                         </tr>
                     @endforeach
                 </tbody>

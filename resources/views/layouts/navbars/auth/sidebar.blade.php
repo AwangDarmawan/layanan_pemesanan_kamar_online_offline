@@ -71,7 +71,7 @@
       </li>
 
       <li class="nav-item pb-2">
-        <a class="btn bg-gradient-primary btn-sm nav-link {{ (Request::is('karyawan/reservasi') ? 'active' : '') }}" href="{{ url('karyawan/reservasi') }}">
+        <a class="btn bg-gradient-dark btn-sm nav-link {{ (Request::is('karyawan/reservasi') ? 'active' : '') }}" href="{{ url('karyawan/reservasi') }}">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <i style="font-size: 1rem;" class="ni ni-fat-add ps-2 pe-2 text-center text-dark {{ (Request::is('karyawan/reservasi') ? 'text-white' : 'text-dark') }} " aria-hidden="true"></i>
           </div>

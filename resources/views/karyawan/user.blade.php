@@ -100,7 +100,7 @@
                     <div>
                         <h5 class="mb-0">Tamu</h5>
                     </div>
-                    <button href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button" data-bs-toggle="modal" data-bs-target="#tamabahTamuModal">+&nbsp; Tamu Baru</button>
+                    <button href="#" class="btn bg-gradient-dark btn-sm mb-0" type="button" data-bs-toggle="modal" data-bs-target="#tamabahTamuModal">+&nbsp; Tamu Baru</button>
                 </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -184,12 +184,16 @@
                                     <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="edit user">
                                         <i class="fas fa-user-edit text-secondary" type="button" data-bs-toggle="modal" data-bs-target="#editTamuModal"></i>
                                     </a>
-                                    <span>
-                                        <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="hapus user">
-                                            <i class="cursor-pointer fas fa-trash text-danger"></i>
+
+                                    <span style="float: right;">
+                                        {!! Form::open(['url' => 'user/hapus/'.$tamu->id, 'method' => 'DELETE']) !!}
+                                        <a href="#" class="me-3" data-bs-toggle="tooltip" data-bs-original-title="hapus kamar">
+                                            {{ Form::button('', ['class' => 'cursor-pointer fas fa-trash text-danger bg-transparent border-0', 'onclick' => "deleteConfirmation('".$tamu->name."')"]) }}
                                         </a>
+                                        {!! Form::close() !!}
                                         
                                     </span>
+                                    
                                 </td>
                           </tr>
                             @endforeach
@@ -249,9 +253,9 @@
                     <input type="number" class="form-control" placeholder="0895XXXXXXXX" name="no_hp" id="no_hp" required>
                   </div>
                 </div>
-                <button type="button" class="btn bg-gradient-primary col-md-5 mt-2" data-dismiss="modal">Batal</button>
+                <button type="button" class="btn bg-gradient-secondary col-md-5 mt-2" data-bs-dismiss="modal">Batal</button>
                 <span>
-                <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2 ms-1" >Simpan</button>
+                <button type="submit" class="btn bg-gradient-dark col-md-5 mt-2 ms-1" >Simpan</button>
                 </span>
               </form>
         </div>
@@ -304,9 +308,9 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2" >Batal</button>
+                <button type="submit" class="btn bg-gradient-secondary col-md-5 mt-2" data-bs-dismiss="modal">Batal</button>
                 <span>
-                <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2 ms-1" >Simpan</button>
+                <button type="submit" class="btn bg-gradient-dark col-md-5 mt-2 ms-1" >Simpan</button>
                 </span>
                 </form>
             </div>

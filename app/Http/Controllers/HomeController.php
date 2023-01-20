@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Auth;
+
+use Session;
 
 //Models
 use App\Models\User;
@@ -98,13 +98,24 @@ class HomeController extends Controller
         $data['id_kamar'] = $id;
         return view('tamu.pesan_kamar')->with($data);
     }
+
     public function store_pesan(Request $request)
     {
         $id_user = Auth::user()->id;
         $id_tamu = Tamu::where('user_id', $id_user)->first()->id;
-
+        $data=$request->get('kamar_id');
+        
+        $a = $request->get('tgl_masuk');
+        $b = $request->get('tgl_keluar');
+        // $harga = $request->
+        // $selisih = $b->diff($a);
+        $selisih = date_diff(date_create($b),date_create($a));
+        $hari=$selisih->d;
+        // $bayar=$hari*
+        
         $data = $request->all();
         $data['tamu_id'] = $id_tamu;
+        $data['jumlah_hari'] = $hari;
         Reservasi::create($data);
         return redirect()->route('tamu.kamar');
     }
