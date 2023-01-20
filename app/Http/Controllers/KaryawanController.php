@@ -207,4 +207,24 @@ class KaryawanController extends Controller
         $data['reservasis'] = Reservasi::all();
         return view('karyawan.tertunda', compact('user','data'))->with($data);
     }
+
+    public function konfirmasi(){
+        $user = Auth::user();
+        $data['reservasis'] = Reservasi::all();
+        return view('karyawan.konfirmasi', compact('user','data'))->with($data);
+    }
+
+    public function laporan(){
+        $user = Auth::user();
+        $data['reservasis'] = Reservasi::all();
+        return view('karyawan.laporan', compact('user','data'))->with($data);
+    }
+
+    public function profile(){
+        $user = Auth::user();
+        $data['karyawans'] = karyawan::all();
+        return view('karyawan.profile', compact('user','data'))->with($data);
+    }
+
+
 }
