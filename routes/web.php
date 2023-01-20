@@ -93,6 +93,11 @@ Route::get('tamu/home',[App\Http\Controllers\HomeController::class, 'home'])->na
 Route::get('tamu/kamar',[App\Http\Controllers\HomeController::class, 'kamar'])->name('tamu.kamar')->middleware('auth');
 Route::get('tamu/tentang',[App\Http\Controllers\HomeController::class, 'tentang'])->name('tamu.tentang')->middleware('auth');
 Route::get('tamu/kontak',[App\Http\Controllers\HomeController::class, 'kontak'])->name('tamu.kontak')->middleware('auth');
-Route::get('tamu/kamar/pesan',[App\Http\Controllers\HomeController::class, 'pesan_kamar'])->name('tamu.pesan')->middleware('auth');
+
+Route::get('tamu/kamar/pesan/{id}',[App\Http\Controllers\HomeController::class, 'pesan_kamar'])->name('tamu.pesan')->middleware('auth');
+Route::post('tamu/kamar/pesan',[App\Http\Controllers\HomeController::class, 'store_pesan'])->name('tamu.pesan.store')->middleware('auth');
+
 Route::get('tamu/profil',[App\Http\Controllers\HomeController::class, 'profil'])->name('tamu.profil')->middleware('auth');
+
 Route::get('tamu/pesanan',[App\Http\Controllers\HomeController::class, 'pesanan'])->name('tamu.pesanan')->middleware('auth');
+Route::put('tamu/pesanan/bukti_pembayaran',[App\Http\Controllers\HomeController::class, 'update_pesanan'])->name('tamu.pesanan.bukti_pembayaran')->middleware('auth');

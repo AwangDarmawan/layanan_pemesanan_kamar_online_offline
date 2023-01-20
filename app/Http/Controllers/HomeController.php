@@ -64,12 +64,7 @@ class HomeController extends Controller
         return view('tamu.kontak', compact('user'));
     }
     
-    public function pesan_kamar()
-    {
-        
-        $user = Auth::user();
-        return view('tamu.pesan_kamar', compact('user'));
-    }
+
     public function profil()
     {
         
@@ -78,8 +73,39 @@ class HomeController extends Controller
     }
     public function pesanan()
     {
-        
-        $user = Auth::user();
-        return view('tamu.pesanan_tamu', compact('user'));
+        $data['reservasi'] = Reservasi::all();
+        return view('tamu.pesanan_tamu')->with($data);
+    }
+
+    public function update_pesanan(Request $request)
+    {
+        // dd($request->all());
+        $reservasi = Reservasi::findOrFail($request->input('id_reservasi'));
+        // dd($reservasi);
+        $data['bukti_pembayaran'] = $request->file('bukti_pembayaran')->storeAs(
+            'reservasi',
+            'reservasi_' . $request->file('bukti_pembayaran')->getClientOriginalName() . '_' . time() . '.' . $request->file('bukti_pembayaran')->extension(),
+            'public'
+        );
+        $update = $reservasi->update($data);
+        return redirect()->route('tamu.pesanan');
+        // $data['reservasi'] = Reservasi::all();
+        // return view('tamu.pesanan_tamu')->with($data);
+    }
+
+    public function pesan_kamar($id)
+    {
+        $data['id_kamar'] = $id;
+        return view('tamu.pesan_kamar')->with($data);
+    }
+    public function store_pesan(Request $request)
+    {
+        $id_user = Auth::user()->id;
+        $id_tamu = Tamu::where('user_id', $id_user)->first()->id;
+
+        $data = $request->all();
+        $data['tamu_id'] = $id_tamu;
+        Reservasi::create($data);
+        return redirect()->route('tamu.kamar');
     }
 }

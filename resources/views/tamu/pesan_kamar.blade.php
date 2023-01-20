@@ -33,45 +33,50 @@
 </head>
 
 <body>
-    @include("layouts.navbars_tamu.navbar")
+    @include('layouts.navbars_tamu.navbar')
 
     <div class="bradcam_area" style="background-color:black">
         <h3>Halaman RESERVASI</h3>
     </div><!-- bradcam_area_end -->
 
-<div class="container">
-    <div class="row justify-content-center">
-    
+    <div class="container">
+        <div class="row justify-content-center">
 
-<div class="card-body my-5 py-5">
-    <h3 class="my-5">RESERVASI DISINI</h3>
-                <form action="#">
+
+            <div class="card-body my-5 py-5">
+                <h3 class="my-5">RESERVASI DISINI</h3>
+                <form action="{{ route('tamu.pesan.store') }}" method="POST">
+                    @csrf
                     <div class="row">
+                        <input type="hidden" value="{{ $id_kamar }}" name="kamar_id">
                         <div class="col-xl-6">
                             <label for="exampleFormControlInput1">Tanggal Check-in</label>
-                            <input type="date" class="form-control" id="" placeholder="Tanggal Check in">
+                            <input type="date" name="tgl_masuk" class="form-control" id=""
+                                placeholder="Tanggal Check in">
                         </div>
                         <div class="col-xl-6">
                             <label for="exampleFormControlInput1">Tanggal Check-out</label>
-                            <input type="date" class="form-control" id="" placeholder="Tanggal Check out">
+                            <input type="date" name="tgl_keluar" class="form-control" id=""
+                                placeholder="Tanggal Check out">
                         </div>
-                        
-                        
+
+
                     </div>
                     <div class="row mt-3">
 
                         <div class="col-xl-6">
                             <label for="exampleFormControlInput1">Lama Menginap</label>
-                            <input readonly type="text" class="form-control" id="" placeholder="lama menginap akan muncul disini">
+                            <input readonly type="text" class="form-control" id=""
+                                placeholder="lama menginap akan muncul disini">
                         </div>
-                        
+
                     </div>
-                    
-                     <div class="col-xl-12 mt-5 mx-0 px-0">
+
+                    <div class="col-xl-12 mt-5 mx-0 px-0">
                         <button type="submit" class="boxed-btn3">RESERVASI</button>
                     </div>
                 </form>
-    {{-- <form>
+                {{-- <form>
         <h6 class="">Data Tamu</h6>
         <div class="form-group">
           <label for="exampleFormControlInput1">Nama</label>
@@ -118,12 +123,12 @@
         </span>
     </form>
        --}}
-</div>
+            </div>
+        </div>
     </div>
-</div>
-    
+
     @include('layouts.footers_tamu.footer')
-<!-- JS here -->
+    <!-- JS here -->
     <script src="../../assets_tamu/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="../../assets_tamu/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="../../assets_tamu/js/popper.min.js"></script>
@@ -142,7 +147,7 @@
     <script src="../../assets_tamu/js/jquery.magnific-popup.min.js"></script>
     <script src="../../assets_tamu/js/plugins.js"></script>
     <script src="../../assets_tamu/js/gijgo.min.js"></script>
-<!--contact js-->
+    <!--contact js-->
     <script src="../../assets_tamu/js/contact.js"></script>
     <script src="../../assets_tamu/js/jquery.ajaxchimp.min.js"></script>
     <script src="../../assets_tamu/js/jquery.form.js"></script>
@@ -154,14 +159,14 @@
         $('#datepicker').datepicker({
             iconsLibrary: 'fontawesome',
             icons: {
-             rightIcon: '<span class="fa fa-caret-down"></span>'
-         }
+                rightIcon: '<span class="fa fa-caret-down"></span>'
+            }
         });
         $('#datepicker2').datepicker({
             iconsLibrary: 'fontawesome',
             icons: {
-             rightIcon: '<span class="fa fa-caret-down"></span>'
-         }
+                rightIcon: '<span class="fa fa-caret-down"></span>'
+            }
 
         });
     </script>

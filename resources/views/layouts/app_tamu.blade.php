@@ -38,8 +38,11 @@
     @yield('content')
 
     @yield('footer')
-    @include('components.form_reservasi')
-<!-- JS here -->
+    {{-- @include('components.form_reservasi') --}}
+    {{-- @include('components.form_bukti_reservasi') --}}
+
+
+    <!-- JS here -->
     <script src="../assets_tamu/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="../assets_tamu/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="../assets_tamu/js/popper.min.js"></script>
@@ -58,7 +61,7 @@
     <script src="../assets_tamu/js/jquery.magnific-popup.min.js"></script>
     <script src="../assets_tamu/js/plugins.js"></script>
     <script src="../assets_tamu/js/gijgo.min.js"></script>
-<!--contact js-->
+    <!--contact js-->
     <script src="../assets_tamu/js/contact.js"></script>
     <script src="../assets_tamu/js/jquery.ajaxchimp.min.js"></script>
     <script src="../assets_tamu/js/jquery.form.js"></script>
@@ -70,18 +73,19 @@
         $('#datepicker').datepicker({
             iconsLibrary: 'fontawesome',
             icons: {
-             rightIcon: '<span class="fa fa-caret-down"></span>'
-         }
+                rightIcon: '<span class="fa fa-caret-down"></span>'
+            }
         });
         $('#datepicker2').datepicker({
             iconsLibrary: 'fontawesome',
             icons: {
-             rightIcon: '<span class="fa fa-caret-down"></span>'
-         }
+                rightIcon: '<span class="fa fa-caret-down"></span>'
+            }
 
         });
     </script>
 
+    @stack('scripts')
 
 
 </body>

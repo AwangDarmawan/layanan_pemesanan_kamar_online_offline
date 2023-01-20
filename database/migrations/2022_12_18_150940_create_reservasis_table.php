@@ -21,24 +21,23 @@ class CreateReservasisTable extends Migration
             ->on('tamus')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->unsignedInteger('karyawan_id');
-            $table->foreign('karyawan_id')
-            ->references('id')
-            ->on('karyawans')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+            // $table->unsignedInteger('karyawan_id');
+            // $table->foreign('karyawan_id')
+            // ->references('id')
+            // ->on('karyawans')
+            // ->onDelete('cascade')
+            // ->onUpdate('cascade');
             $table->unsignedInteger('kamar_id');
             $table->foreign('kamar_id')
             ->references('id')
             ->on('kamars')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->integer('jumlah_kamar');
+            // $table->integer('jumlah_kamar');
+            $table->string('bukti_pembayaran')->nullable();
             $table->date('tgl_masuk');
             $table->date('tgl_keluar');
-            $table->timestamps();
-
-            
+            $table->timestamps();     
             
         });
     }
