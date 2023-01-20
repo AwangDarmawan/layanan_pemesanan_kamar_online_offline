@@ -6,6 +6,16 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+//Models
+use App\Models\User;
+use App\Models\karyawan;
+use App\Models\Tamu;
+use App\Models\kamar;
+use App\Models\statusKamar;
+use App\Models\jenisKamar;
+use App\Models\Reservasi;
+use App\Models\detail_Reservasi;
+
 class HomeController extends Controller
 {
     /**
@@ -32,19 +42,18 @@ class HomeController extends Controller
 
     public function home()
     {
-        
         $user = Auth::user();
+       
         return view('tamu.home', compact('user'));
     }
     public function kamar()
     {
-        
         $user = Auth::user();
-        return view('tamu.kamar', compact('user'));
+        $data['kamars'] = kamar::all();
+        return view('tamu.kamar', compact('user','data'))->with($data);
     }
     public function tentang()
     {
-        
         $user = Auth::user();
         return view('tamu.tentang', compact('user'));
     }

@@ -20,48 +20,25 @@
         </div>
         <div class="row">
             <div class="col-xl-4 col-md-4">
+                @foreach ($kamars as $kamar )
+                    
+                
                 <div class="single_offers">
                     <div class="about_thumb">
                         <img src="../assets_tamu/img/offers/1.png" alt="">
                     </div>
                     <h4 class="mt-3"><span>NO_Kamar :</span> 
-                        isino kamar</h4>
-                    <h5>isi jenis kamar </h5>
-                    <h5><span>Rp. </span>isi harga kamar </h5>
+                        {{ $kamar->no_kamar }}</h4>
+                    <h5>{{ $kamar->jenisKamar->name }} </h5>
+                    <h5><span>Rp. </span>{{ $kamar->harga }} </h5>
                     <span >
-                        deskripsi kamar
+                        {{ $kamar->deskripsi }}
                     </span>
                     <a href="{{ url('tamu/kamar/pesan') }}" class="book_now mt-4">Pesan Sekarang</a>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-4">
-                <div class="single_offers">
-                    <div class="about_thumb">
-                        <img src="../assets_tamu/img/offers/2.png" alt="">
-                    </div>
-                    <h3>Up to 35% savings on Club <br>
-                        rooms and Suites</h3>
-                    <ul>
-                        <li>Luxaries condition</li>
-                        <li>3 Adults & 2 Children size</li>
-                    </ul>
-                    <a href="#" class="book_now">book now</a>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-4">
-                <div class="single_offers">
-                    <div class="about_thumb">
-                        <img src="../assets_tamu/img/offers/3.png" alt="">
-                    </div>
-                    <h3>Up to 35% savings on Club <br>
-                        rooms and Suites</h3>
-                    <ul>
-                        <li>Luxaries condition</li>
-                        <li>3 Adults & 2 Children size</li>
-                    </ul>
-                    <a href="#" class="book_now">book now</a>
-                </div>
-            </div>
+            @endforeach
+            
         </div>
     </div>
 </div>
