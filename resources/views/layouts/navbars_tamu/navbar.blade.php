@@ -9,15 +9,9 @@
                                 <li><a class="{{ (Request::is('tamu/home') ? 'active' : '') }}" href="{{ url('tamu/home') }}">home</a></li>
                                 <li><a class="{{ (Request::is('tamu/kamar') ? 'active' : '') }}"href="{{ url('tamu/kamar') }}">Kamar</a></li>
                                 <li><a class="{{ (Request::is('tamu/tentang') ? 'active' : '') }}"href="{{ url('tamu/tentang') }}">Tentang</a></li>
-                                <li><a class="{{ (Request::is('tamu/blog','tamu/singgle-blog') ? 'active' : '') }}" href="#">Blog <i class="ti-angle-down"></i></a>
+                                <li><a class="{{ (Request::is('tamu/pesanan') ? 'active' : '') }}" href="#">pages <i class="ti-angle-down"></i></a>
                                     <ul class="submenu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="single-blog.html">single-blog</a></li>
-                                    </ul>
-                                </li>
-                                <li><a class="{{ (Request::is('tamu/elements') ? 'active' : '') }}" href="#">pages <i class="ti-angle-down"></i></a>
-                                    <ul class="submenu">
-                                        <li><a href="elements.html">elements</a></li>
+                                        <li><a href="{{ url('tamu/pesanan') }}">Pesanan Anda</a></li>
                                     </ul>
                                 </li>
                                 <li><a class="{{ (Request::is('tamu/kontak') ? 'active' : '') }}" href="{{ url('tamu/kontak') }}">Kontak</a></li>
@@ -56,6 +50,7 @@
                         <div class="book_btn d-none d-lg-block">
                             <a class="popup-with-form" href="#test-form">Memesan Kamar</a>
                         </div>
+                        <a class="{{ (Request::is('tamu/profil') ? 'active' : '') }}" href="{{ url('tamu/profil') }}"> <i class="fas fa-user-circle fa-2x text-white ml-3"></i><h3 class="text-white text-bold"style="float:right;">&nbsp;PROFIL<h3></a>
                     </div>
                 </div>
                 <div class="col-12">

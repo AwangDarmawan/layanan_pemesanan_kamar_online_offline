@@ -5,7 +5,7 @@
 
  <!-- bradcam_area_start -->
  <div class="bradcam_area breadcam_bg_1">
-    <h3>Kamar yang nyaman</h3>
+    <h3>Pilih Kamar yang nyaman disini</h3>
 </div><!-- bradcam_area_end -->
 
 <div class="offers_area">
@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="section_title text-center mb-100">
-                    <span>Penawaran kami</span>
+                    <h2 class="text-info mt-4">Penawaran kami</h2>
                     <h3>Untuk Anda</h3>
                 </div>
             </div>

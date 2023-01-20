@@ -30,36 +30,47 @@ class HomeController extends Controller
         return view('home', compact('user'));
     }
 
-    //Karyawan
-    public function dashboard(){
+    public function home()
+    {
+        
         $user = Auth::user();
-        return view('karyawan.dashboard', compact('user'));
+        return view('tamu.home', compact('user'));
     }
-
-  
-    public function kamar(){
+    public function kamar()
+    {
+        
         $user = Auth::user();
-        return view('karyawan.kamar', compact('user'));
+        return view('tamu.kamar', compact('user'));
     }
-
-    public function tertunda(){
+    public function tentang()
+    {
+        
         $user = Auth::user();
-        return view('karyawan.tertunda', compact('user'));
+        return view('tamu.tentang', compact('user'));
     }
-
-    public function konfirmasi(){
+    public function kontak()
+    {
+        
         $user = Auth::user();
-        return view('karyawan.konfirmasi', compact('user'));
+        return view('tamu.kontak', compact('user'));
     }
-
-    public function laporan(){
+    
+    public function pesan_kamar()
+    {
+        
         $user = Auth::user();
-        return view('karyawan.laporan', compact('user'));
+        return view('tamu.pesan_kamar', compact('user'));
     }
-
-    public function profile(){
+    public function profil()
+    {
+        
         $user = Auth::user();
-        return view('karyawan.profile', compact('user'));
+        return view('tamu.profil', compact('user'));
     }
-
+    public function pesanan()
+    {
+        
+        $user = Auth::user();
+        return view('tamu.pesanan_tamu', compact('user'));
+    }
 }
