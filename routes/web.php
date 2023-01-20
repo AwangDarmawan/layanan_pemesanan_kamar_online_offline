@@ -87,3 +87,12 @@ Route::delete('kamar/hapus/{id}', [KaryawanController::class, 'hapus_kamar'])
 Route::post('karyawan/reservasi/tambah', [KaryawanController::class, 'tambah_reservasi'])
 ->name('karyawan.reservasi.tambah')
 ->middleware('karyawan');
+
+//tamu Route
+Route::get('tamu/home',[App\Http\Controllers\HomeController::class, 'home'])->name('home')->middleware('auth');
+Route::get('tamu/kamar',[App\Http\Controllers\HomeController::class, 'kamar'])->name('tamu.kamar')->middleware('auth');
+Route::get('tamu/tentang',[App\Http\Controllers\HomeController::class, 'tentang'])->name('tamu.tentang')->middleware('auth');
+Route::get('tamu/kontak',[App\Http\Controllers\HomeController::class, 'kontak'])->name('tamu.kontak')->middleware('auth');
+Route::get('tamu/kamar/pesan',[App\Http\Controllers\HomeController::class, 'pesan_kamar'])->name('tamu.pesan')->middleware('auth');
+Route::get('tamu/profil',[App\Http\Controllers\HomeController::class, 'profil'])->name('tamu.profil')->middleware('auth');
+Route::get('tamu/pesanan',[App\Http\Controllers\HomeController::class, 'pesanan'])->name('tamu.pesanan')->middleware('auth');
