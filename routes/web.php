@@ -67,19 +67,10 @@ Route::get('karyawan/profile', [App\Http\Controllers\KaryawanController::class, 
 
 
 //tamu Route
-Route::get('tamu/home', function () {
-    return view('tamu.halaman');
-})->name('tamu.home');
-Route::get('tamu/kamar', function () {
-    return view('tamu.kamar');
-})->name('tamu.kamar');
-Route::get('tamu/tentang', function () {
-    return view('tamu.tentang');
-})->name('tamu.tentang');
-Route::get('tamu/kontak', function () {
-    return view('tamu.kontak');
-})->name('tamu.kontak');
-
-Route::get('tamu/kamar/pesan', function () {
-    return view('components.ieu');
-})->name('tamu.pesan');
+Route::get('tamu/home',[App\Http\Controllers\HomeController::class, 'home'])->name('home')->middleware('auth');
+Route::get('tamu/kamar',[App\Http\Controllers\HomeController::class, 'kamar'])->name('tamu.kamar')->middleware('auth');
+Route::get('tamu/tentang',[App\Http\Controllers\HomeController::class, 'tentang'])->name('tamu.tentang')->middleware('auth');
+Route::get('tamu/kontak',[App\Http\Controllers\HomeController::class, 'kontak'])->name('tamu.kontak')->middleware('auth');
+Route::get('tamu/kamar/pesan',[App\Http\Controllers\HomeController::class, 'pesan_kamar'])->name('tamu.pesan')->middleware('auth');
+Route::get('tamu/profil',[App\Http\Controllers\HomeController::class, 'profil'])->name('tamu.profil')->middleware('auth');
+Route::get('tamu/pesanan',[App\Http\Controllers\HomeController::class, 'pesanan'])->name('tamu.pesanan')->middleware('auth');
