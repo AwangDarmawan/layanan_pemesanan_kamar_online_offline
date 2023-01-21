@@ -30,7 +30,7 @@ class KaryawanController extends Controller
         $this->middleware('auth');
     }
 
-   
+
     public function dashboard(){
         $user = Auth::user();
         $data['kamars'] = kamar::all();
@@ -89,20 +89,20 @@ class KaryawanController extends Controller
      public function hapus_user($id)
      {
          tamu::destroy($id);
- 
+
          //isi alert
- 
+
          Session::flash('status', 'Hapus data berhasil!!!');
          return redirect()->back();
      }
- 
-    
+
+
     //KAMAR
     public function kamar(){
         $user = Auth::user();
         $data['kamars'] = kamar::all();
-        
-        return view('karyawan.kamar', compact('user','data'))->with($data);
+        $data['jenis_kamar'] = jenisKamar::all();
+        return view('karyawan.kamar')->with($data);
     }
 
    //tambah kamar
@@ -120,7 +120,7 @@ class KaryawanController extends Controller
             'deskripsi' => 'required|max:20',
             'foto_kamar' => 'required|image',
             'foto_wc' => 'required|image',
-            
+
 
         ]);
 
@@ -163,7 +163,7 @@ class KaryawanController extends Controller
 
         //isi alert
 
-        
+
         Session::flash('status', 'Tambah Data berhasil!!!');
         return redirect()->route('karyawan.kamar');
     }
@@ -184,7 +184,7 @@ class KaryawanController extends Controller
             //     'min' => ':attribute harus diisi minimal :min karakter ya cuy!!!',
             //     'max' => ':attribute harus diisi maksimal :max karakter ya cuy!!!',
             // ];
-    
+
             $validated = $req->validate([
                 'no_kamar' => 'required',
                 'jenis_kamar_id' => 'required',
@@ -199,14 +199,14 @@ class KaryawanController extends Controller
             $data->jenis_kamar_id = $req->input('jenis_kamar_id');
             $data->harga = $req->input('harga');
             $data->deskripsi = $req->input('deskripsi');
-            
+
             if($req->file('foto_kamar')){
                 $extension = $req->file('foto_kamar')->extension();
                 $filename = 'foto_kamar_'.time().'.'.$extension;
                 $req->file('foto_kamar')->storeAs(
                     'public/img', $filename
                 );
-    
+
                 Storage::delete('public/img/'.$req->input('old_foto_kamar'));
                 $data->foto_kamar = $filename;
             }
@@ -216,7 +216,7 @@ class KaryawanController extends Controller
                 $req->file('foto_wc')->storeAs(
                     'public/img', $filename
                 );
-    
+
                 Storage::delete('public/img/'.$req->input('old_foto_wc'));
                 $data->foto_wc = $filename;
             }
@@ -226,21 +226,21 @@ class KaryawanController extends Controller
                 $req->file('foto_ruangan')->storeAs(
                     'public/img', $filename
                 );
-    
+
                 Storage::delete('public/img/'.$req->input('old_foto_ruangan'));
                 $data->foto_ruangan = $filename;
             }
 
-    
+
             $data->save();
-           
+
             Session::flash('status', 'Edit Data Berhasil!!!');
             return redirect()->route('karyawan.kamar');
-    
-    
+
+
         }
-    
-    
+
+
     //hapus kamar
     public function hapus_kamar($id)
     {

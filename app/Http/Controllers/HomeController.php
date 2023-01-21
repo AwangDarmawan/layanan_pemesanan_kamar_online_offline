@@ -15,6 +15,9 @@ use App\Models\statusKamar;
 use App\Models\jenisKamar;
 use App\Models\Reservasi;
 use App\Models\detail_Reservasi;
+use App\Notifications\PembayaranNotification;
+
+use Illuminate\Support\Facades\Notification;
 
 class HomeController extends Controller
 {
@@ -35,7 +38,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
+
         $user = Auth::user();
         return view('home', compact('user'));
     }
@@ -43,14 +46,14 @@ class HomeController extends Controller
     public function home()
     {
         $user = Auth::user();
-       
+
         return view('tamu.home', compact('user'));
     }
     public function kamar()
     {
         $user = Auth::user();
         $data['kamars'] = kamar::all();
-        return view('tamu.kamar', compact('user','data'))->with($data);
+        return view('tamu.kamar')->with($data);
     }
     public function tentang()
     {
@@ -59,15 +62,15 @@ class HomeController extends Controller
     }
     public function kontak()
     {
-        
+
         $user = Auth::user();
         return view('tamu.kontak', compact('user'));
     }
-    
+
 
     public function profil()
     {
-        
+
         $user = Auth::user();
         return view('tamu.profil', compact('user'));
     }
@@ -80,6 +83,7 @@ class HomeController extends Controller
     public function update_pesanan(Request $request)
     {
         // dd($request->all());
+
         $reservasi = Reservasi::findOrFail($request->input('id_reservasi'));
         // dd($reservasi);
         $data['bukti_pembayaran'] = $request->file('bukti_pembayaran')->storeAs(
@@ -88,6 +92,8 @@ class HomeController extends Controller
             'public'
         );
         $update = $reservasi->update($data);
+        $user = Auth::user();
+        Notification::sendNow($user, new PembayaranNotification($user));
         return redirect()->route('tamu.pesanan');
         // $data['reservasi'] = Reservasi::all();
         // return view('tamu.pesanan_tamu')->with($data);
@@ -103,19 +109,23 @@ class HomeController extends Controller
     {
         $id_user = Auth::user()->id;
         $id_tamu = Tamu::where('user_id', $id_user)->first()->id;
-        $data=$request->get('kamar_id');
-        
+        $harga_kamar=Kamar::where('id', $request->get('kamar_id'))->first()->harga;
         $a = $request->get('tgl_masuk');
         $b = $request->get('tgl_keluar');
         // $harga = $request->
         // $selisih = $b->diff($a);
         $selisih = date_diff(date_create($b),date_create($a));
+
         $hari=$selisih->d;
+
+        $bayar=$hari*$harga_kamar;
+
         // $bayar=$hari*
-        
+
         $data = $request->all();
         $data['tamu_id'] = $id_tamu;
-        $data['jumlah_hari'] = $hari;
+        $data['lama_menginap'] = $hari;
+        $data['total_pembayaran'] = $bayar;
         Reservasi::create($data);
         return redirect()->route('tamu.kamar');
     }

@@ -13,7 +13,9 @@ class Reservasi extends Model
         'tgl_masuk',
         'tgl_keluar',
         'jumlah_hari',
-        'bukti_pembayaran'
+        'bukti_pembayaran',
+        'lama_menginap',
+        'total_pembayaran',
     ];
     use HasFactory;
     public function tamu(){
@@ -26,5 +28,5 @@ class Reservasi extends Model
         return $this->belongsTo(kamar::class, 'kamar_id', 'id');
     }
 
-   
+
 }
