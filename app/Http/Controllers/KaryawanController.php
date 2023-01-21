@@ -117,7 +117,7 @@ class KaryawanController extends Controller
             'no_kamar' => 'required',
             'jenis_kamar_id' => 'required',
             'harga' => 'required|min:5',
-            'deskripsi' => 'required|max:20',
+            'deskripsi' => 'required|max:30',
             'foto_kamar' => 'required|image',
             'foto_wc' => 'required|image',
 
@@ -189,7 +189,7 @@ class KaryawanController extends Controller
                 'no_kamar' => 'required',
                 'jenis_kamar_id' => 'required',
                 'harga' => 'required|min:5',
-                'deskripsi' => 'required|max20',
+                'deskripsi' => 'required|max:30',
                 'foto_kamar' => 'required|image',
                 'foto_wc' => 'required|image',
             ]);

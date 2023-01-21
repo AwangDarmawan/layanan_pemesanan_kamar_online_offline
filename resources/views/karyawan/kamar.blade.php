@@ -285,9 +285,9 @@
                             <label for="edit-jenis">Jenis Kamar</label>
                             <select class="form-control" id="edit-jenis" name="jenis_kamar_id">
                                 <option>pilih</option>
-                                @foreach ($kamars as $kamar)
-                               <option value={{ $kamar->jenis_kamar_id }}>{{  $kamar->jenisKamar->name }}</option>
-                                @endforeach
+                                @foreach ($jenis_kamar as $kamar)
+                               <option value={{ $kamar->id }}>{{  $kamar->name }}</option>
+                            @endforeach
                             </select>
                         </div>
                         <div class="form-group">

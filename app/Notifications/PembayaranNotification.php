@@ -42,7 +42,7 @@ class PembayaranNotification extends Notification implements ShouldQueue
     {
         return (new MailMessage)
                     ->line('Hi, Admin')
-                    ->line('Mahasiswa dengan username '.$this->user->username.' telah mengirim bukti pembayaran')
+                    ->line('Tamu dengan username '.$this->user->username.' telah mengirim bukti pembayaran')
                     ->line('Thank you for using our application!');
     }
 
