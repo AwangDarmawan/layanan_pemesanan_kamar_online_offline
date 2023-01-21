@@ -17,8 +17,9 @@
                 <th>KODE RESERVASI</th>
                 <th>TAGGAL CHECK-IN</th>
                 <th>TANGGAL CHECK-OUT</th>
-                <th>kAMAR</th>
+                <th>KAMAR</th>
                 <th>TAMU</th>
+                <th>LAMA MENGINAP</th>
                 <th>TOTAL PEMBAYARAN</th>
             </tr>
         </thead>
@@ -31,7 +32,8 @@
                 <td>{{ $reservasi->tgl_keluar }}</td>
                 <td>{{ $reservasi->kamar->no_kamar }}</td>
                 <td>{{ $reservasi->tamu->name}}</td>
-                <td></td>
+                <td>{{ $reservasi->tamu->lama_menginap}}</td>
+                <td>{{ $reservasi->total_pembayaran }}</td>
             </tr>
             @endforeach
         </tbody>

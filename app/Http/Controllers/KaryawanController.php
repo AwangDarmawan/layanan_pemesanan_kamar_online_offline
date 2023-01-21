@@ -290,7 +290,7 @@ class KaryawanController extends Controller
         $data['reservasis'] = Reservasi::all();
         $pdf = PDF::loadview('karyawan.pdf', $data);
 
-        return $pdf->stream('coba_pdf.pdf');
+        return $pdf->stream('laporan_pdf.pdf');
     }
 
 

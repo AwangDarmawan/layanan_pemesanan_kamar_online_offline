@@ -17,7 +17,7 @@ class ReservasiExport implements FromArray, WithHeadings, ShouldAutoSize
     // {
     //     return Reservasi::all();
     // }
-    
+
     public function array(): array
     {
         $reservasis = Reservasi::with('kamar')->get();
@@ -33,8 +33,9 @@ class ReservasiExport implements FromArray, WithHeadings, ShouldAutoSize
             // $datareservasis[$i]['status'] = ($reservasis[$i]['status'] == 1)? 'AKTIF' : 'TIDAK AKTIF';
             $datareservasis[$i]['kamar_id'] = $reservasis[$i]['kamar_id'];
             $datareservasis[$i]['tamu_id'] = $reservasis[$i]['tamu_id'];
+            $datareservasis[$i]['total_pembayaran'] = $reservasis[$i]['total_pembayaran'];
             // $datareservasis[$i]['total_pembayaran'] = $reservasis[$i]['total_pembayaran'];
-            
+
         }
 
         return $datareservasis;
@@ -42,7 +43,7 @@ class ReservasiExport implements FromArray, WithHeadings, ShouldAutoSize
 
     public function headings(): array{
         return[
-            
+
            ' Kode Reservasi',
             'Check-in',
             'Check-out',
