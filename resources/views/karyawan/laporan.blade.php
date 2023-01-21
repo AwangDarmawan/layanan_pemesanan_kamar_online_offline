@@ -27,36 +27,39 @@
               </thead>
               <tbody>
                 
+                @foreach ($reservasis as $reservasi )
+                  
+                
                 <tr>
                   <td class="ps-4"> 
-                    <p class="text-xs font-weight-bold mb-0">1</p>
+                    <p class="text-xs font-weight-bold mb-0">{{ $reservasi->id }}</p>
                   </td>
                   <td> 
-                    <p class="text-xs font-weight-bold mb-0">12/2/2022</p>
+                    <p class="text-xs font-weight-bold mb-0">{{ $reservasi->tgl_masuk }}</p>
                   </td>
                   <td> 
-                    <p class="text-xs font-weight-bold mb-0">14/2/2022</p>
+                    <p class="text-xs font-weight-bold mb-0">{{ $reservasi->tgl_keluar }}</p>
                   </td>
                   <td> 
-                    <p class="text-xs font-weight-bold mb-0">B1</p>
+                    <p class="text-xs font-weight-bold mb-0">{{ $reservasi->kamar->id }}</p>
                   </td>
                   <td> 
-                    <p class="text-xs font-weight-bold mb-0">Rudi</p>
+                    <p class="text-xs font-weight-bold mb-0">{{ $reservasi->tamu->name }}</p>
                   </td>
                   <td> 
-                    <p class="text-xs font-weight-bold mb-0">rp. 600.000</p>
+                    <p class="text-xs font-weight-bold mb-0">{{ $reservasi->total_pembayaran }}</p>
                   </td>
                   <td> 
-                    <p class="text-xs font-weight-bold mb-0">budi</p>
+                    <p class="text-xs font-weight-bold mb-0"></p>
                   </td>
                   <td>
                     <span class="btn bg-gradient-success m-1 p-2">
-                    <a href="#" class="m-1 p-0" data-bs-toggle="tooltip" data-bs-original-title="export ke excel">
+                    <a href="{{ route('karyawan.export') }}" target="_blank"class="m-1 p-0" data-bs-toggle="tooltip" data-bs-original-title="export ke excel">
                       <i class="fas fa-lg fa-file-excel text-white m-0 p-0"></i>
                     </a>
                     </span>
                     <span class="btn bg-gradient-info m-1 p-2">
-                    <a href="#" class="m-1 p-0" data-bs-toggle="tooltip" data-bs-original-title="Cetak pdf">
+                    <a href="{{ route('karyawan.print') }}" target="_blank" class="m-1 p-0" data-bs-toggle="tooltip" data-bs-original-title="Cetak pdf">
                       <i class="fas fa-lg fa-file-pdf text-white m-0 p-0"></i>
                     </a>
                     </span>
@@ -70,7 +73,7 @@
                     
                   </td>
                 </tr>
-                
+                @endforeach
                 
               </tbody>
             </table>

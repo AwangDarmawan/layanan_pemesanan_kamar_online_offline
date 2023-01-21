@@ -67,9 +67,9 @@
                             <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="masukan tanggal keluar kamar">
                         </div>
                     </div>
-                    <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2" >Batal</button>
+                    <button type="submit" class="btn bg-gradient-secondary col-md-5 mt-2" >Batal</button>
                     <span>
-                    <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2 ms-1" >Reservasi</button>
+                    <button type="submit" class="btn bg-gradient-dark col-md-5 mt-2 ms-1" >Reservasi</button>
                     </span>
                 </form>
                   

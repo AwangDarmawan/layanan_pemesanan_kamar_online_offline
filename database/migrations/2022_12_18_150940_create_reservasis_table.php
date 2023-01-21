@@ -21,7 +21,7 @@ class CreateReservasisTable extends Migration
             ->on('tamus')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->unsignedInteger('karyawan_id');
+            $table->unsignedInteger('karyawan_id')->nullable();
             $table->foreign('karyawan_id')
             ->references('id')
             ->on('karyawans')
@@ -33,12 +33,15 @@ class CreateReservasisTable extends Migration
             ->on('kamars')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->integer('jumlah_kamar');
+            // $table->integer('jumlah_kamar');
+            $table->string('bukti_pembayaran')->nullable();
             $table->date('tgl_masuk');
             $table->date('tgl_keluar');
-            $table->timestamps();
-
+            $table->integer('lama_menginap');
+            $table->integer('total_pembayaran');
+            $table->enum('status_reservasi', ['tertunda','terkonfirmasi','selesai'])->default('tertunda');
             
+            $table->timestamps();     
             
         });
     }

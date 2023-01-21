@@ -33,6 +33,7 @@ class CreateKamarsTable extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->string('deskripsi');
+            
 
             $table->timestamps();
 

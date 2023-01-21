@@ -37,19 +37,7 @@ class KamarSeeder extends Seeder
                 'deskripsi' => 'Cocok untuk yang suka harga hemat dan yang seneng liburan sendiri. Fasilitas yang tersedia akan memuaskan anda tersedia satu tempat tidur dan Wc dengan desain yang elegan',
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now()
-            ], 
-            [
-                'no_kamar' => '1B',
-                'jenis_kamar_id' => 2,
-                'status_id' => 1,
-                'harga' => '400000',
-                'foto_kamar' => '121jpg',
-                'foto_wc' => '122jpg',
-                'deskripsi' => 'Sangat ramah disuasana suami dan istri yang ingin menginap, dengan fasilitas malam pertama menyediakan 1 tempat tidur berukuran besar',
-                'created_at' => \Carbon\Carbon::now(),
-                'updated_at' => \Carbon\Carbon::now()
-            ]
-            
+            ],   
         ]);
     }
 }

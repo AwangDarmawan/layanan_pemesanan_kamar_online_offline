@@ -12,7 +12,7 @@
                         <div>
                             <h5 class="mb-0">Semua Kamar</h5>
                         </div>
-                        <button href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button" data-bs-toggle="modal" data-bs-target="#tamabahKamarModal">+&nbsp; Kamar Baru</button>
+                        <button href="#" class="btn bg-gradient-dark btn-sm mb-0" type="button" data-bs-toggle="modal" data-bs-target="#tamabahKamarModal">+&nbsp; Kamar Baru</button>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
@@ -109,13 +109,13 @@
                                         
                                     </td>
                                     <td class="text-center">
-                                        {{-- <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="edit data kamar"> --}}
+                                        <a href="#" class="mx-0" data-bs-toggle="tooltip" data-bs-original-title="edit data kamar">
                                             <i class="fas fa-user-edit text-secondary" type="button" data-bs-toggle="modal" data-bs-target="#editKamarModal" data-id="{{ $kamar->id }}" id="btn-edit-kamar"></i>
-                                        {{-- </a> --}}
-                                        <span>
+                                        </a> 
+                                        <span style="float: right;">
                                             {!! Form::open(['url' => 'kamar/hapus/'.$kamar->id, 'method' => 'DELETE']) !!}
-                                            <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="hapus kamar">
-                                                {{ Form::button('', ['class' => 'cursor-pointer fas fa-trash text-danger bg-transparent border-0', 'onclick' => "deleteConfirmation('".$kamar->no_kamar."')"]) }}
+                                            <a href="#" class="me-3" data-bs-toggle="tooltip" data-bs-original-title="hapus kamar">
+                                                {{ Form::button('', ['class' => 'cursor-pointer fas fa-trash text-danger bg-transparent border-0', 'onclick' => "deleteKamarConfirmation('".$kamar->no_kamar."')"]) }}
                                             </a>
                                             {!! Form::close() !!}
                                             
@@ -140,6 +140,15 @@
                 <h4 class="modal-title text-center mt-4" id="exampleModalLabel">Masukan Data Kamar</h4>
             
             <div class="modal-body">
+                {{-- @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif --}}
                 <form method="post" action="{{ route('karyawan.tambah.kamar') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -180,9 +189,9 @@
                         <label for="deskripsi">Deskripsi</label>
                         <textarea class="form-control" rows="3" name="deskripsi" id="deskripsi"></textarea>
                     </div>
-                    <button type="button" class="btn bg-gradient-primary col-md-5 mt-2" data-bs-dismiss="modal" >Batal</button>
+                    <button type="button" class="btn bg-gradient-secondary col-md-5 mt-2" data-bs-dismiss="modal" >Batal</button>
                     <span>
-                    <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2 ms-1" >Simpan</button>
+                    <button type="submit" class="btn bg-gradient-dark col-md-5 mt-2 ms-1" >Simpan</button>
                     </span>
                 </form>
             </div>
@@ -319,9 +328,9 @@
                     <input type="hidden" name="old_foto_wc" id="edit-old-foto_wc"/>
                     <input type="hidden" name="id" id="edit-id"/>
                     <input type="hidden" name="old_foto_ruangan" id="edit-old-foto_ruangan"/> 
-                    <button type="button" class="btn bg-gradient-primary col-md-5 mt-2" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn bg-gradient-secondary col-md-5 mt-2" data-bs-dismiss="modal">Batal</button>
                 <span>
-                    <button type="submit" class="btn bg-gradient-primary col-md-5 mt-2 ms-1" >Simpan</button>
+                    <button type="submit" class="btn bg-gradient-dark col-md-5 mt-2 ms-1" >Simpan</button>
                 </span>
                 </form>
             </div>
